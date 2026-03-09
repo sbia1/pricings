@@ -5,52 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StaffCo — Pricing Concepts v3</title>
 <style>
-  :root { --font: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
-</style>
-<style>
+:root { --font: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
 [data-theme="dark"] {
-  --bg: #080B0F;
-  --bg2: #0D1117;
-  --surface: #111620;
-  --surface2: #161C28;
-  --surface-hover: #1B2233;
-  --border: #1E2738;
-  --border2: #273044;
-  --text: #E2E8F5;
-  --text-dim: #7A8BA8;
-  --text-muted: #3D4F6A;
-  --nav-bg: rgba(8,11,15,0.94);
-  --shadow: 0 4px 30px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 50px rgba(0,0,0,0.7);
-  --tbl-alt: rgba(255,255,255,0.012);
-  --tbl-hover: rgba(255,255,255,0.018);
+  --bg: #080B0F; --bg2: #0D1117; --surface: #111620; --surface2: #161C28;
+  --surface-hover: #1B2233; --border: #1E2738; --border2: #273044;
+  --text: #E2E8F5; --text-dim: #7A8BA8; --text-muted: #3D4F6A;
+  --nav-bg: rgba(8,11,15,0.94); --shadow: 0 4px 30px rgba(0,0,0,0.5);
   --input-bg: rgba(255,255,255,0.04);
-  --tag-new-bg: rgba(251,146,60,0.12);
-  --tag-new-color: #FB923C;
+  --tag-new-bg: rgba(251,146,60,0.12); --tag-new-color: #FB923C;
 }
 [data-theme="light"] {
-  --bg: #F4F6FB;
-  --bg2: #EDF0F7;
-  --surface: #FFFFFF;
-  --surface2: #F8FAFD;
-  --surface-hover: #F0F3FA;
-  --border: #DDE2EF;
-  --border2: #C8CFDF;
-  --text: #1A2540;
-  --text-dim: #4B5C7A;
-  --text-muted: #92A0BA;
-  --nav-bg: rgba(244,246,251,0.94);
-  --shadow: 0 4px 30px rgba(0,30,80,0.08);
-  --shadow-lg: 0 8px 50px rgba(0,30,80,0.14);
-  --tbl-alt: rgba(0,0,0,0.018);
-  --tbl-hover: rgba(0,0,0,0.028);
+  --bg: #F4F6FB; --bg2: #EDF0F7; --surface: #FFFFFF; --surface2: #F8FAFD;
+  --surface-hover: #F0F3FA; --border: #DDE2EF; --border2: #C8CFDF;
+  --text: #1A2540; --text-dim: #4B5C7A; --text-muted: #92A0BA;
+  --nav-bg: rgba(244,246,251,0.94); --shadow: 0 4px 30px rgba(0,30,80,0.08);
   --input-bg: rgba(0,0,0,0.03);
-  --tag-new-bg: rgba(251,146,60,0.1);
-  --tag-new-color: #EA7914;
+  --tag-new-bg: rgba(251,146,60,0.1); --tag-new-color: #EA7914;
 }
 :root {
-  --blue: #3B82F6; --font-mono: var(--font); --font-sans: var(--font);
-  --blue-dim: rgba(59,130,246,0.14); --blue-glow: rgba(59,130,246,0.22); --blue-h: #5B9BFF;
+  --blue: #3B82F6; --blue-dim: rgba(59,130,246,0.14); --blue-glow: rgba(59,130,246,0.22); --blue-h: #5B9BFF;
   --green: #10B981; --green-dim: rgba(16,185,129,0.14);
   --orange: #F59E0B; --orange-dim: rgba(245,158,11,0.12);
   --purple: #8B5CF6; --purple-dim: rgba(139,92,246,0.14);
@@ -58,789 +31,282 @@
   --red: #EF4444; --red-dim: rgba(239,68,68,0.12);
   --r: 14px; --rs: 10px; --rx: 7px;
 }
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font);
-  -webkit-font-smoothing: antialiased;
-  background: var(--bg); color: var(--text);
-  min-height: 100vh; overflow-x: hidden;
-  transition: background 0.3s, color 0.3s;
-}
-body::before {
-  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; transition: opacity 0.3s;
-}
-[data-theme="dark"] body::before {
-  background: radial-gradient(ellipse 70% 50% at 15% 0%, rgba(59,130,246,0.06), transparent),
-    radial-gradient(ellipse 50% 60% at 90% 90%, rgba(139,92,246,0.04), transparent);
-}
-[data-theme="light"] body::before {
-  background: radial-gradient(ellipse 70% 50% at 15% 0%, rgba(59,130,246,0.05), transparent),
-    radial-gradient(ellipse 50% 60% at 90% 90%, rgba(139,92,246,0.03), transparent);
-}
-
-/* ═══ NAV ═══ */
-.nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(18px) saturate(180%); border-bottom: 1px solid var(--border); transition: background 0.3s, border-color 0.3s; }
-.nav-inner { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; gap: 12px; height: 58px; padding: 0 20px; }
-.logo { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); margin-right: 8px; white-space: nowrap; }
-.logo em { font-style: normal; color: var(--blue); }
-.logo span { font-size: 10px; color: var(--text-muted); font-weight: 400; letter-spacing: 0; margin-left: 3px; }
-
-.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; padding: 4px 0; flex: 1; }
-.tabs::-webkit-scrollbar { display: none; }
-.tab { font-size: 10.5px; letter-spacing: 0.03em; padding: 7px 13px; border-radius: 8px; border: 1px solid transparent; background: none; color: var(--text-muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; display: flex; align-items: center; gap: 6px; font-family: var(--font); }
-.tab:hover { color: var(--text-dim); background: var(--input-bg); }
-.tab.active { color: var(--blue); border-color: rgba(59,130,246,0.3); background: var(--blue-dim); }
-.tab-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.5; }
-.tab.active .tab-dot { opacity: 1; }
-
-.theme-toggle { display: flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px; border-radius: 100px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; transition: all 0.2s; font-size: 11px; color: var(--text-dim); font-family: var(--font); white-space: nowrap; flex-shrink: 0; }
-.theme-toggle:hover { border-color: var(--border2); color: var(--text); }
-.theme-toggle svg { width: 14px; height: 14px; transition: transform 0.4s; }
-[data-theme="light"] .theme-toggle svg { transform: rotate(180deg); }
-.tt-track { width: 30px; height: 16px; border-radius: 100px; background: var(--border2); position: relative; transition: background 0.25s; flex-shrink: 0; }
-[data-theme="light"] .tt-track { background: var(--blue); }
-.tt-thumb { width: 12px; height: 12px; border-radius: 50%; background: var(--text-muted); position: absolute; top: 2px; left: 2px; transition: all 0.25s; }
-[data-theme="light"] .tt-thumb { left: 16px; background: #fff; }
-
-/* ═══ PAGE ═══ */
-.page { position: relative; z-index: 1; }
-.concept { display: none; animation: fadeIn 0.3s ease; }
-.concept.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
-/* ═══ CONCEPT HEADER ═══ */
-.ch { text-align: center; padding: 48px 24px 40px; }
-.ch-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; font-family: var(--font); }
-.ch-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-.ch h2 { font-size: clamp(22px, 2.8vw, 34px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 12px; }
-.ch h2 em { font-style: normal; color: var(--blue); }
-.ch p { color: var(--text-dim); font-size: 15px; max-width: 540px; margin: 0 auto; line-height: 1.65; }
-.c-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px 64px; }
-
-/* ═══ SHARED: Card ═══ */
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 24px; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, background 0.3s; }
-.card:hover { border-color: var(--border2); }
-
-/* ═══ SHARED: Toggle ═══ */
-.tgl { position: relative; width: 38px; height: 20px; cursor: pointer; display: inline-flex; flex-shrink: 0; }
-.tgl input { opacity: 0; width: 0; height: 0; position: absolute; }
-.tgl .sl { position: absolute; inset: 0; background: var(--border2); border-radius: 100px; transition: all 0.22s; }
-.tgl .sl::after { content: ''; position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--text-muted); top: 3px; left: 3px; transition: all 0.22s; }
-.tgl input:checked + .sl { background: var(--blue); }
-.tgl input:checked + .sl::after { transform: translateX(18px); background: #fff; }
-
-/* ═══ SHARED: Info btn ═══ */
-.ibtn { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--border2); background: none; color: var(--text-muted); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.18s; flex-shrink: 0; font-family: var(--font); line-height: 1; }
-.ibtn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-dim); }
-
-/* Tooltip Portal */
-#tt-portal { position: fixed; width: 240px; background: var(--surface); border: 1px solid var(--border2); border-radius: 10px; padding: 12px 14px; z-index: 99999; pointer-events: none; box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2); opacity: 0; transform: translateY(4px); transition: opacity 0.15s ease, transform 0.15s ease; display: none; }
-[data-theme="light"] #tt-portal { box-shadow: 0 8px 24px rgba(0,30,80,0.14), 0 2px 6px rgba(0,30,80,0.08); }
-#tt-portal.show { opacity: 1; transform: translateY(0); display: block; }
-#tt-portal .tt-arrow { position: absolute; width: 10px; height: 10px; background: var(--surface); border-right: 1px solid var(--border2); border-bottom: 1px solid var(--border2); transform: rotate(45deg); }
-.tt-name { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-.tt-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-.tt-list li { font-size: 11px; color: var(--text-dim); display: flex; gap: 7px; line-height: 1.4; }
-.tt-list li::before { content: '·'; color: var(--blue); font-size: 14px; line-height: 1; flex-shrink: 0; }
-.tt-avail { margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 10px; color: var(--text-muted); }
-
-/* ═══ SHARED: Total Bar ═══ */
-.tot-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: var(--rx); background: var(--blue-dim); border: 1px solid rgba(59,130,246,0.2); margin-top: 12px; }
-.tot-lbl { font-size: 11px; color: var(--text-dim); font-family: var(--font); letter-spacing: 0.04em; text-transform: uppercase; }
-.tot-val { font-size: 15px; font-weight: 700; color: var(--blue); }
-.tot-val .dm { font-size: 10px; color: var(--text-muted); font-weight: 400; }
-
-/* ═══ SHARED: Side Panel ═══ */
-.ov { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s; backdrop-filter: blur(6px); }
-.ov.open { opacity: 1; visibility: visible; }
-.pnl { position: fixed; top: 0; right: 0; width: 420px; max-width: 92vw; height: 100vh; background: var(--surface); border-left: 1px solid var(--border); z-index: 999; transform: translateX(100%); transition: transform 0.36s cubic-bezier(0.16,1,0.3,1); overflow-y: auto; display: flex; flex-direction: column; }
-.pnl.open { transform: translateX(0); }
-.pnl-hd { padding: 18px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-.pnl-hd-t { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font); }
-.pnl-x { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: none; color: var(--text-dim); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
-.pnl-x:hover { background: var(--surface-hover); color: var(--text); }
-.pnl-bd { padding: 22px 22px 0; flex: 1; }
-.pnl-icon { width: 52px; height: 52px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 24px; background: var(--input-bg); margin-bottom: 14px; }
-.pnl-name { font-size: 20px; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.01em; }
-.pnl-price { font-size: 20px; font-weight: 600; color: var(--blue); margin-bottom: 14px; }
-.pnl-price .dm { color: var(--text-muted); font-size: 11px; font-weight: 400; }
-.pnl-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
-.pnl-sec { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 10px; font-family: var(--font); }
-.pnl-fl { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-.pnl-fl li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text-dim); line-height: 1.5; }
-.pnl-fl li .ck { width: 18px; height: 18px; border-radius: 50%; background: var(--blue-dim); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; margin-top: 2px; }
-.pnl-tiers { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-bottom: 20px; }
-.pnl-tier { text-align: center; padding: 10px 6px; border-radius: var(--rx); border: 1px solid var(--border); background: var(--surface2); }
-.pnl-tier-n { font-size: 10px; font-weight: 600; margin-bottom: 3px; }
-.pnl-tier-p { font-size: 12px; font-weight: 700; }
-.pnl-uc { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--rs); padding: 14px; margin-bottom: 22px; }
-.pnl-uc-l { font-size: 10px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; font-family: var(--font); }
-.pnl-uc-t { font-size: 12px; color: var(--text-dim); line-height: 1.6; font-style: italic; }
-.pnl-ft { padding: 16px 22px; border-top: 1px solid var(--border); flex-shrink: 0; }
-.pnl-cta { width: 100%; padding: 13px; border-radius: var(--rs); font-size: 14px; font-weight: 700; background: var(--blue); color: #fff; border: none; cursor: pointer; transition: all 0.2s; font-family: var(--font); }
-.pnl-cta:hover { background: var(--blue-h); transform: translateY(-1px); box-shadow: 0 4px 20px var(--blue-glow); }
-
-/* Tags */
-.tag { font-size: 9px; font-family: var(--font); padding: 2px 7px; border-radius: 100px; font-weight: 500; }
-.tag-new { background: var(--tag-new-bg); color: var(--tag-new-color); }
-.tag-ai { background: var(--purple-dim); color: var(--purple); }
-.tag-pop { background: var(--blue); color: #fff; }
-
-/* Tier feature lists */
-.tier-feat-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-.tier-feat-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.4; }
-.tier-feat-check { font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; width: 14px; text-align: center; }
-.tier-feat-text { color: var(--text-dim); }
-.tier-feat-note { font-size: 10px; color: var(--text-muted); margin-left: 5px; background: var(--input-bg); padding: 1px 6px; border-radius: 4px; font-weight: 500; }
-
-.tier-s { color: var(--green); }
-.tier-p { color: var(--blue); }
-.tier-b { color: var(--orange); }
-.tier-e { color: var(--purple); }
-
-/* Buttons */
-.btn { padding: 12px 26px; border-radius: var(--rs); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; font-family: var(--font); }
-.btn-pri { background: var(--blue); color: #fff; }
-.btn-pri:hover { background: var(--blue-h); transform: translateY(-1px); box-shadow: 0 4px 18px var(--blue-glow); }
-
-/* ═══ C2: IN-TIER ═══ */
-.c2-tiers { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; align-items: start; }
-@media (max-width:1100px) { .c2-tiers { grid-template-columns: repeat(2,1fr); } }
-@media (max-width:600px) { .c2-tiers { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
-.c2-tier { animation: fadeUp 0.32s ease both; position: relative; overflow: hidden; }
-.c2-tier:nth-child(1){animation-delay:.04s}.c2-tier:nth-child(2){animation-delay:.09s}.c2-tier:nth-child(3){animation-delay:.14s;border-color:rgba(245,158,11,0.35);box-shadow:0 0 32px var(--orange-dim);}.c2-tier:nth-child(4){animation-delay:.19s}
-.c2-popular-strip { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
-.c2-tier-hd { margin-bottom: 16px; }
-.c2-tier-n { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 5px; font-family: var(--font); }
-.c2-tier-price { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
-.c2-tier-price .dm { font-size: 12px; color: var(--text-dim); font-weight: 400; }
-.c2-tier-sub { font-size: 10px; color: var(--text-muted); margin-top: 3px; font-family: var(--font); }
-.c2-divider { height: 1px; background: var(--border); margin: 16px 0; }
-.c2-acc-btn { width: 100%; background: none; border: none; color: var(--text-dim); font-family: var(--font); font-size: 11px; font-weight: 600; padding: 10px 0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-transform: uppercase; letter-spacing: 0.07em; }
-.c2-acc-btn .arr { transition: transform 0.3s; font-size: 12px; color: var(--text-muted); }
-.c2-acc-btn.open { color: var(--text); }
-.c2-acc-btn.open .arr { transform: rotate(180deg); }
-.c2-acc { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-.c2-acc.open { max-height: 800px; overflow: visible; }
-.c2-acc-inner { display: flex; flex-direction: column; gap: 6px; padding-bottom: 4px; }
-.c2-row { display: flex; align-items: center; gap: 7px; padding: 8px 10px; border-radius: var(--rx); background: var(--input-bg); border: 1px solid var(--border); transition: border-color 0.15s; position: relative; }
-.c2-row:hover { border-color: var(--border2); }
-.c2-ri { font-size: 14px; flex-shrink: 0; }
-.c2-rn { font-size: 11px; font-weight: 500; flex: 1; min-width: 0; }
-.c2-rp { font-size: 10px; color: var(--blue); white-space: nowrap; font-weight: 600; }
-.c2-rp.inc { color: var(--green); }
-
-/* ═══ C5: DRAWER ═══ */
-.c5-tiers { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; align-items: start; }
-@media (max-width:1100px) { .c5-tiers { grid-template-columns: repeat(2,1fr); } }
-@media (max-width:600px) { .c5-tiers { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
-.c5-tier { animation: fadeUp 0.32s ease both; position: relative; overflow: hidden; }
-.c5-tier:nth-child(1){animation-delay:.04s}.c5-tier:nth-child(2){animation-delay:.09s}.c5-tier:nth-child(3){animation-delay:.14s;border-color:rgba(245,158,11,0.35);box-shadow:0 0 32px var(--orange-dim);}.c5-tier:nth-child(4){animation-delay:.19s}
-.c5-pop-strip { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
-.tier-tagline { font-size: 12px; color: var(--text-dim); line-height: 1.45; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-.c5-cbtn { width: 100%; padding: 10px 14px; border-radius: var(--rs); font-family: var(--font); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; border: 1px dashed var(--border2); background: var(--input-bg); color: var(--text-dim); display: flex; align-items: center; justify-content: center; gap: 8px; }
-.c5-cbtn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-dim); }
-.c5-cbtn .ci { font-size: 14px; transition: transform 0.3s; display: inline-block; }
-.c5-cbtn.open { border-style: solid; border-color: rgba(59,130,246,0.3); color: var(--blue); background: var(--blue-dim); }
-.c5-cbtn.open .ci { transform: rotate(45deg); }
-.c5-dr { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1); }
-.c5-dr.open { max-height: 800px; margin-top: 14px; overflow: visible; }
-.c5-dr-inner { display: flex; flex-direction: column; gap: 6px; }
-.c5-dr-t { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 4px; font-family: var(--font); }
-.c5-row { display: flex; align-items: center; gap: 7px; padding: 8px 10px; border-radius: var(--rx); background: var(--input-bg); border: 1px solid var(--border); transition: border-color 0.15s; position: relative; }
-.c5-row:hover { border-color: var(--border2); }
-.c5-row-n { font-size: 11px; font-weight: 500; flex: 1; min-width: 0; }
-.c5-row-p { font-size: 10px; white-space: nowrap; font-weight: 600; }
-
-/* ═══ Billing toggle ═══ */
-.billing-toggle { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 28px; }
-.billing-opt { font-size: 13px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; font-family: var(--font); }
-.billing-opt.active { color: var(--text); font-weight: 600; }
-.billing-save { font-size: 10px; color: var(--green); background: var(--green-dim); padding: 2px 8px; border-radius: 100px; font-weight: 600; }
-.billing-track { width: 42px; height: 22px; border-radius: 100px; background: var(--border2); cursor: pointer; position: relative; transition: background 0.25s; flex-shrink: 0; }
-.billing-track.annual { background: var(--green); }
-.billing-track-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--text-muted); position: absolute; top: 3px; left: 3px; transition: all 0.25s; }
-.billing-track.annual .billing-track-thumb { left: 23px; background: #fff; }
-
-@media (max-width: 600px) {
-  .ch { padding: 32px 16px 28px; }
-  .c-inner { padding: 0 14px 48px; }
-  .nav-inner { padding: 0 14px; gap: 8px; }
-}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0}
+[data-theme="dark"] body::before{background:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(59,130,246,.06),transparent),radial-gradient(ellipse 50% 60% at 90% 90%,rgba(139,92,246,.04),transparent)}
+[data-theme="light"] body::before{background:radial-gradient(ellipse 70% 50% at 15% 0%,rgba(59,130,246,.05),transparent),radial-gradient(ellipse 50% 60% at 90% 90%,rgba(139,92,246,.03),transparent)}
+.nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(18px) saturate(180%);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:12px;height:58px;padding:0 20px}
+.logo{font-size:15px;font-weight:600;color:var(--text);margin-right:8px;white-space:nowrap}
+.logo em{font-style:normal;color:var(--blue)}
+.logo span{font-size:10px;color:var(--text-muted);font-weight:400;margin-left:3px}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:4px 0;flex:1}
+.tabs::-webkit-scrollbar{display:none}
+.tab{font-size:10.5px;letter-spacing:.03em;padding:7px 13px;border-radius:8px;border:1px solid transparent;background:none;color:var(--text-muted);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;font-family:var(--font)}
+.tab:hover{color:var(--text-dim);background:var(--input-bg)}
+.tab.active{color:var(--blue);border-color:rgba(59,130,246,.3);background:var(--blue-dim)}
+.tab-dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
+.tab.active .tab-dot{opacity:1}
+.nav-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.theme-toggle,.edit-toggle{display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:100px;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:all .2s;font-size:11px;color:var(--text-dim);font-family:var(--font);white-space:nowrap;flex-shrink:0}
+.theme-toggle:hover,.edit-toggle:hover{border-color:var(--border2);color:var(--text)}
+.edit-toggle.on{border-color:rgba(245,158,11,.5);color:var(--orange);background:var(--orange-dim)}
+.theme-toggle svg{width:14px;height:14px;transition:transform .4s}
+[data-theme="light"] .theme-toggle svg{transform:rotate(180deg)}
+.tt-track{width:30px;height:16px;border-radius:100px;background:var(--border2);position:relative;transition:background .25s;flex-shrink:0}
+[data-theme="light"] .tt-track{background:var(--blue)}
+.tt-thumb{width:12px;height:12px;border-radius:50%;background:var(--text-muted);position:absolute;top:2px;left:2px;transition:all .25s}
+[data-theme="light"] .tt-thumb{left:16px;background:#fff}
+.page{position:relative;z-index:1}
+.concept{display:none;animation:fadeIn .3s ease}
+.concept.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.ch{text-align:center;padding:48px 24px 40px}
+.ch-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:18px;font-family:var(--font)}
+.ch-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+.ch h2{font-size:clamp(22px,2.8vw,34px);font-weight:600;letter-spacing:-.01em;line-height:1.1;margin-bottom:12px}
+.ch h2 em{font-style:normal;color:var(--blue)}
+.ch p{color:var(--text-dim);font-size:15px;max-width:540px;margin:0 auto;line-height:1.65}
+.c-inner{max-width:1280px;margin:0 auto;padding:0 24px 64px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:24px;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:var(--border2)}
+.tgl{position:relative;width:38px;height:20px;cursor:pointer;display:inline-flex;flex-shrink:0}
+.tgl input{opacity:0;width:0;height:0;position:absolute}
+.tgl .sl{position:absolute;inset:0;background:var(--border2);border-radius:100px;transition:all .22s}
+.tgl .sl::after{content:'';position:absolute;width:14px;height:14px;border-radius:50%;background:var(--text-muted);top:3px;left:3px;transition:all .22s}
+.tgl input:checked+.sl{background:var(--blue)}
+.tgl input:checked+.sl::after{transform:translateX(18px);background:#fff}
+.ibtn{width:20px;height:20px;border-radius:50%;border:1px solid var(--border2);background:none;color:var(--text-muted);font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;flex-shrink:0;font-family:var(--font);line-height:1}
+.ibtn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-dim)}
+#tt-portal{position:fixed;width:240px;background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:12px 14px;z-index:99999;pointer-events:none;box-shadow:0 8px 32px rgba(0,0,0,.35);opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s;display:none}
+#tt-portal.show{opacity:1;transform:translateY(0);display:block}
+#tt-portal .tt-arrow{position:absolute;width:10px;height:10px;background:var(--surface);border-right:1px solid var(--border2);border-bottom:1px solid var(--border2);transform:rotate(45deg)}
+.tt-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.tt-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.tt-list li{font-size:11px;color:var(--text-dim);display:flex;gap:7px;line-height:1.4}
+.tt-list li::before{content:'·';color:var(--blue);font-size:14px;line-height:1;flex-shrink:0}
+.tt-avail{margin-top:9px;padding-top:8px;border-top:1px solid var(--border);font-size:10px;color:var(--text-muted)}
+.tot-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:var(--rx);background:var(--blue-dim);border:1px solid rgba(59,130,246,.2);margin-top:12px}
+.tot-lbl{font-size:11px;color:var(--text-dim);letter-spacing:.04em;text-transform:uppercase}
+.tot-val{font-size:15px;font-weight:700;color:var(--blue)}
+.tot-val .dm{font-size:10px;color:var(--text-muted);font-weight:400}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;opacity:0;visibility:hidden;transition:all .3s;backdrop-filter:blur(6px)}
+.ov.open{opacity:1;visibility:visible}
+.pnl{position:fixed;top:0;right:0;width:420px;max-width:92vw;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:999;transform:translateX(100%);transition:transform .36s cubic-bezier(.16,1,.3,1);overflow-y:auto;display:flex;flex-direction:column}
+.pnl.open{transform:translateX(0)}
+.pnl-hd{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.pnl-hd-t{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+.pnl-x{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:none;color:var(--text-dim);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.pnl-x:hover{background:var(--surface-hover);color:var(--text)}
+.pnl-bd{padding:22px 22px 0;flex:1}
+.pnl-icon{width:52px;height:52px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--input-bg);margin-bottom:14px}
+.pnl-name{font-size:20px;font-weight:600;margin-bottom:4px}
+.pnl-price{font-size:20px;font-weight:600;color:var(--blue);margin-bottom:14px}
+.pnl-price .dm{color:var(--text-muted);font-size:11px;font-weight:400}
+.pnl-desc{font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:20px}
+.pnl-sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:10px}
+.pnl-fl{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.pnl-fl li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-dim);line-height:1.5}
+.pnl-fl li .ck{width:18px;height:18px;border-radius:50%;background:var(--blue-dim);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px}
+.pnl-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:20px}
+.pnl-tier{text-align:center;padding:10px 6px;border-radius:var(--rx);border:1px solid var(--border);background:var(--surface2)}
+.pnl-tier-n{font-size:10px;font-weight:600;margin-bottom:3px}
+.pnl-tier-p{font-size:12px;font-weight:700}
+.pnl-uc{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--rs);padding:14px;margin-bottom:22px}
+.pnl-uc-l{font-size:10px;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.pnl-uc-t{font-size:12px;color:var(--text-dim);line-height:1.6;font-style:italic}
+.pnl-ft{padding:16px 22px;border-top:1px solid var(--border);flex-shrink:0}
+.pnl-cta{width:100%;padding:13px;border-radius:var(--rs);font-size:14px;font-weight:700;background:var(--blue);color:#fff;border:none;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.pnl-cta:hover{background:var(--blue-h)}
+.tag{font-size:9px;font-family:var(--font);padding:2px 7px;border-radius:100px;font-weight:500}
+.tag-new{background:var(--tag-new-bg);color:var(--tag-new-color)}
+.tag-ai{background:var(--purple-dim);color:var(--purple)}
+.tag-pop{background:var(--blue);color:#fff}
+.tier-feat-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.tier-feat-list li{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.4}
+.tier-feat-check{font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;width:14px;text-align:center}
+.tier-feat-text{color:var(--text-dim);flex:1}
+.tier-feat-note{font-size:10px;color:var(--text-muted);margin-left:5px;background:var(--input-bg);padding:1px 6px;border-radius:4px;font-weight:500}
+.tier-s{color:var(--green)}.tier-p{color:var(--blue)}.tier-b{color:var(--orange)}.tier-e{color:var(--purple)}
+.c2-tiers,.c5-tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+@media(max-width:1100px){.c2-tiers,.c5-tiers{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.c2-tiers,.c5-tiers{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+.c2-tier,.c5-tier{animation:fadeUp .32s ease both;position:relative;overflow:hidden}
+.c2-tier:nth-child(3),.c5-tier:nth-child(3){border-color:rgba(245,158,11,.35);box-shadow:0 0 32px var(--orange-dim)}
+.c2-popular-strip,.c5-pop-strip{position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange)}
+.c2-tier-n{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:5px}
+.c2-tier-price{font-size:26px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.c2-tier-price .dm{font-size:12px;color:var(--text-dim);font-weight:400}
+.c2-tier-sub{font-size:10px;color:var(--text-muted);margin-top:3px}
+.c2-divider{height:1px;background:var(--border);margin:16px 0}
+.c2-acc-btn{width:100%;background:none;border:none;color:var(--text-dim);font-family:var(--font);font-size:11px;font-weight:600;padding:10px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-transform:uppercase;letter-spacing:.07em}
+.c2-acc-btn .arr{transition:transform .3s;font-size:12px;color:var(--text-muted)}
+.c2-acc-btn.open{color:var(--text)}
+.c2-acc-btn.open .arr{transform:rotate(180deg)}
+.c2-acc{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.c2-acc.open{max-height:800px;overflow:visible}
+.c2-acc-inner{display:flex;flex-direction:column;gap:6px;padding-bottom:4px}
+.c2-row,.c5-row{display:flex;align-items:center;gap:7px;padding:8px 10px;border-radius:var(--rx);background:var(--input-bg);border:1px solid var(--border);transition:border-color .15s}
+.c2-row:hover,.c5-row:hover{border-color:var(--border2)}
+.c2-ri{font-size:14px;flex-shrink:0}
+.c2-rn{font-size:11px;font-weight:500;flex:1;min-width:0}
+.c2-rp{font-size:10px;color:var(--blue);white-space:nowrap;font-weight:600}
+.c2-rp.inc{color:var(--green)}
+.tier-tagline{font-size:12px;color:var(--text-dim);line-height:1.45;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.c5-cbtn{width:100%;padding:10px 14px;border-radius:var(--rs);font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;border:1px dashed var(--border2);background:var(--input-bg);color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:8px}
+.c5-cbtn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-dim)}
+.c5-cbtn .ci{font-size:14px;transition:transform .3s;display:inline-block}
+.c5-cbtn.open{border-style:solid;border-color:rgba(59,130,246,.3);color:var(--blue);background:var(--blue-dim)}
+.c5-cbtn.open .ci{transform:rotate(45deg)}
+.c5-dr{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.c5-dr.open{max-height:800px;margin-top:14px;overflow:visible}
+.c5-dr-inner{display:flex;flex-direction:column;gap:6px}
+.c5-dr-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:4px}
+.c5-row-n{font-size:11px;font-weight:500;flex:1;min-width:0}
+.c5-row-p{font-size:10px;white-space:nowrap;font-weight:600}
+.billing-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px}
+.billing-opt{font-size:13px;color:var(--text-muted);cursor:pointer;transition:color .2s}
+.billing-opt.active{color:var(--text);font-weight:600}
+.billing-save{font-size:10px;color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:100px;font-weight:600}
+.billing-track{width:42px;height:22px;border-radius:100px;background:var(--border2);cursor:pointer;position:relative;transition:background .25s;flex-shrink:0}
+.billing-track.annual{background:var(--green)}
+.billing-track-thumb{width:16px;height:16px;border-radius:50%;background:var(--text-muted);position:absolute;top:3px;left:3px;transition:all .25s}
+.billing-track.annual .billing-track-thumb{left:23px;background:#fff}
+/* EDIT MODE */
+.edit-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--surface);border-top:2px solid var(--orange);padding:12px 20px;backdrop-filter:blur(12px)}
+.edit-bar.show{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.edit-bar-label{font-size:11px;color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:6px}
+.edit-bar-label::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.eb{padding:8px 16px;border-radius:8px;font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border2);background:var(--surface2);color:var(--text-dim);transition:all .2s}
+.eb:hover{border-color:var(--text-muted);color:var(--text)}
+.eb-pri{background:var(--blue);color:#fff;border-color:var(--blue)}
+.eb-grn{background:var(--green);color:#fff;border-color:var(--green)}
+.eb-red{border-color:rgba(239,68,68,.3);color:var(--red)}
+.eb-red:hover{background:var(--red-dim)}
+.eb-spacer{flex:1}
+[data-editable]{position:relative}
+body.editing [data-editable]{cursor:text;outline:1px dashed rgba(245,158,11,.4);outline-offset:2px;border-radius:4px}
+body.editing [data-editable]:hover{outline-color:var(--orange)}
+body.editing [data-editable]:focus{outline:2px solid var(--orange);outline-offset:2px;background:rgba(245,158,11,.05)}
+.feat-actions{display:none;gap:3px;margin-left:auto;flex-shrink:0}
+body.editing .feat-actions{display:flex}
+.feat-act{width:18px;height:18px;border-radius:4px;border:1px solid var(--border2);background:none;color:var(--text-muted);font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.feat-act:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-dim)}
+.feat-act.del:hover{border-color:var(--red);color:var(--red);background:var(--red-dim)}
+.add-feat-btn{display:none;width:100%;padding:6px;border-radius:6px;border:1px dashed var(--border2);background:none;color:var(--text-muted);font-size:11px;cursor:pointer;transition:all .15s;font-family:var(--font);margin-top:4px}
+body.editing .add-feat-btn{display:block}
+.add-feat-btn:hover{border-color:var(--green);color:var(--green);background:var(--green-dim)}
+.import-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.import-modal-bg.show{display:flex}
+.import-modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:28px;width:560px;max-width:92vw;max-height:80vh;display:flex;flex-direction:column;gap:14px}
+.import-modal h3{font-size:16px;font-weight:600}
+.import-modal textarea{width:100%;height:260px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--rx);color:var(--text);font-family:'SF Mono','Fira Code',monospace;font-size:11px;padding:12px;resize:vertical}
+.import-modal-actions{display:flex;gap:8px;justify-content:flex-end}
+@media(max-width:600px){.ch{padding:32px 16px 28px}.c-inner{padding:0 14px 48px}.nav-inner{padding:0 14px;gap:8px}}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="logo">Staff<em>Co</em> <span>pricing v3</span></div>
-    <div class="tabs" id="tabs-container"></div>
-    <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
-        <circle cx="10" cy="10" r="4"/>
-        <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.5 4.5l1.4 1.4M14.1 14.1l1.4 1.4M4.5 15.5l1.4-1.4M14.1 5.9l1.4-1.4"/>
-      </svg>
-      <div class="tt-track"><div class="tt-thumb"></div></div>
-      <span id="theme-lbl">Dark</span>
-    </button>
+<nav class="nav"><div class="nav-inner">
+  <div class="logo">Staff<em>Co</em> <span>pricing v3</span></div>
+  <div class="tabs" id="tabs-container"></div>
+  <div class="nav-actions">
+    <button class="edit-toggle" id="edit-btn" onclick="toggleEdit()"><span id="edit-icon">✏️</span> <span id="edit-lbl">Edit Mode</span></button>
+    <button class="theme-toggle" onclick="toggleTheme()"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.5 4.5l1.4 1.4M14.1 14.1l1.4 1.4M4.5 15.5l1.4-1.4M14.1 5.9l1.4-1.4"/></svg><div class="tt-track"><div class="tt-thumb"></div></div><span id="theme-lbl">Dark</span></button>
   </div>
-</nav>
-
+</div></nav>
 <div class="page">
   <div class="concept active" id="c-intier"></div>
   <div class="concept" id="c-drawer"></div>
 </div>
-
-<!-- SIDE PANEL -->
+<div class="edit-bar" id="edit-bar">
+  <span class="edit-bar-label">Edit Mode Active</span>
+  <span class="eb-spacer"></span>
+  <button class="eb" onclick="exportJSON()">📋 Copy JSON</button>
+  <button class="eb" onclick="showImport()">📥 Import JSON</button>
+  <button class="eb eb-red" onclick="resetData()">↺ Reset</button>
+  <button class="eb eb-grn" onclick="downloadHTML()">⬇ Download</button>
+</div>
+<div class="import-modal-bg" id="import-modal" onclick="if(event.target===this)hideImport()">
+  <div class="import-modal">
+    <h3>Import Configuration</h3>
+    <p style="font-size:12px;color:var(--text-dim)">Paste exported JSON below to restore a config.</p>
+    <textarea id="import-ta" placeholder="Paste JSON here..."></textarea>
+    <div class="import-modal-actions"><button class="eb" onclick="hideImport()">Cancel</button><button class="eb eb-pri" onclick="doImport()">Import & Apply</button></div>
+  </div>
+</div>
 <div class="ov" id="ov" onclick="closePanel()"></div>
 <div class="pnl" id="pnl">
-  <div class="pnl-hd">
-    <span class="pnl-hd-t">Add-on Details</span>
-    <button class="pnl-x" onclick="closePanel()">✕</button>
-  </div>
+  <div class="pnl-hd"><span class="pnl-hd-t">Add-on Details</span><button class="pnl-x" onclick="closePanel()">✕</button></div>
   <div class="pnl-bd" id="pnl-body"></div>
   <div class="pnl-ft"><button class="pnl-cta" onclick="closePanel()">Got it — close</button></div>
 </div>
-
 <script>
-// ═══════════════════════════════════════════
-// DATA — Updated from docx
-// ═══════════════════════════════════════════
-const PLANS = [
-  {
-    id:'basic', label:'Basic', price:7, color:'tier-s', icon:'🟢',
-    desc:'Up to 20 users · Unlimited projects · 3-month data',
-    tagline:'For solopreneurs & early-stage startups (up to 20 people)',
-    features:[
-      { text:'Up to 20 users', note:'' },
-      { text:'Unlimited projects & tasks', note:'no client assignment or budgets' },
-      { text:'Auto & manual time tracking', note:'' },
-      { text:'Screenshots every 5 min (fixed)', note:'no blur/deletion control' },
-      { text:'App & website monitoring (Usage by User only)', note:'' },
-      { text:'Individual user dashboard & timeline', note:'' },
-      { text:'Daily time report (view only, no export)', note:'' },
-      { text:'Time entries — edit own only', note:'no approval workflow' },
-      { text:'1 department, 3 teams max', note:'' },
-      { text:'Up to 5 tags', note:'' },
-      { text:'Email notifications only', note:'' },
-      { text:'2FA & password security', note:'' },
-      { text:'Setup wizard & company profile', note:'' },
-      { text:'3-month data retention', note:'' },
-    ],
-  },
-  {
-    id:'pro', label:'Pro', price:14, color:'tier-p', icon:'🔵',
-    desc:'Unlimited users & projects · 12-month data',
-    tagline:'For growing teams of 10–50 people, agencies & remote-first companies',
-    features:[
-      { text:'Everything in Basic', note:'' },
-      { text:'Unlimited users (by seat count)', note:'' },
-      { text:'Unlimited projects & full client management', note:'' },
-      { text:'Screenshot controls per user', note:'blur, interval 1/3/5/10 min, deletion' },
-      { text:'All reporting modules', note:'daily time, screenshot activity, web & app usage' },
-      { text:'CSV export on all reports', note:'' },
-      { text:'App & web rating', note:'productive/unproductive/neutral' },
-      { text:'Team-wide time approval workflow', note:'pending, approved, rejected' },
-      { text:'Full adjustment history log', note:'' },
-      { text:'Unlimited teams & team managers', note:'' },
-      { text:'Unlimited tags', note:'' },
-      { text:'Org chart visibility', note:'' },
-      { text:'Google Calendar sync (2-way)', note:'' },
-      { text:'Weekly summary email reports', note:'' },
-      { text:'Company-wide default settings', note:'manual time, idle timeout, blur' },
-      { text:'12-month data retention', note:'' },
-    ],
-  },
-  {
-    id:'premium', label:'Premium', price:22, color:'tier-b', icon:'🟠',
-    desc:'Advanced analytics · Integrations · AI · 24-month data',
-    tagline:'For mid-size companies (50–200), HR-driven & compliance-conscious',
-    features:[
-      { text:'Everything in Pro', note:'' },
-      { text:'Delay report (daily/weekly per user & team)', note:'' },
-      { text:'User activity overview & behavioral analytics', note:'' },
-      { text:'Advanced notification rules', note:'idle alerts, daily digests, custom thresholds' },
-      { text:'Advanced screenshot settings', note:'1 min intervals, random capture, auto-delete' },
-      { text:'Slack integration', note:'daily/weekly summaries, idle alert bot' },
-      { text:'Jira/Linear integration', note:'task import, time sync to tickets' },
-      { text:'Google Calendar bidirectional task sync', note:'' },
-      { text:'AI weekly summary', note:'anomaly detection, top performers, workload tips' },
-      { text:'Custom productivity categories', note:'beyond default classifications' },
-      { text:'Multiple company workspaces (up to 3)', note:'' },
-      { text:'Priority email support (24h SLA)', note:'' },
-      { text:'24-month data retention', note:'' },
-    ],
-  },
-  {
-    id:'enterprise', label:'Enterprise', price:null, color:'tier-e', icon:'🟣',
-    desc:'Custom contracts · Unlimited data · SSO · Full compliance',
-    tagline:'For 200+ person companies, global teams, DAOs, regulated industries',
-    features:[
-      { text:'Everything in Premium', note:'' },
-      { text:'Volume discounts (50+ seats)', note:'' },
+const DEFAULT_PLANS=[{id:"basic",label:"Basic",price:7,color:"tier-s",icon:"🟢",desc:"Up to 20 users · Unlimited projects · 3-month data",tagline:"For solopreneurs & early-stage startups (up to 20 people)",features:[{text:"Up to 20 users",note:""},{text:"Unlimited projects & tasks",note:"no client assignment or budgets"},{text:"Auto & manual time tracking",note:""},{text:"Screenshots every 5 min (fixed)",note:"no blur/deletion control"},{text:"App & website monitoring (Usage by User only)",note:""},{text:"Individual user dashboard & timeline",note:""},{text:"Daily time report (view only, no export)",note:""},{text:"Time entries — edit own only",note:"no approval workflow"},{text:"1 department, 3 teams max",note:""},{text:"Up to 5 tags",note:""},{text:"Email notifications only",note:""},{text:"2FA & password security",note:""},{text:"Setup wizard & company profile",note:""},{text:"3-month data retention",note:""}]},{id:"pro",label:"Pro",price:14,color:"tier-p",icon:"🔵",desc:"Unlimited users & projects · 12-month data",tagline:"For growing teams of 10–50 people, agencies & remote-first companies",features:[{text:"Everything in Basic",note:""},{text:"Unlimited users (by seat count)",note:""},{text:"Unlimited projects & full client management",note:""},{text:"Screenshot controls per user",note:"blur, interval 1/3/5/10 min, deletion"},{text:"All reporting modules",note:"daily time, screenshot activity, web & app usage"},{text:"CSV export on all reports",note:""},{text:"App & web rating",note:"productive/unproductive/neutral"},{text:"Team-wide time approval workflow",note:"pending, approved, rejected"},{text:"Full adjustment history log",note:""},{text:"Unlimited teams & team managers",note:""},{text:"Unlimited tags",note:""},{text:"Org chart visibility",note:""},{text:"Google Calendar sync (2-way)",note:""},{text:"Weekly summary email reports",note:""},{text:"Company-wide default settings",note:"manual time, idle timeout, blur"},{text:"12-month data retention",note:""}]},{id:"premium",label:"Premium",price:22,color:"tier-b",icon:"🟠",desc:"Advanced analytics · Integrations · AI · 24-month data",tagline:"For mid-size companies (50–200), HR-driven & compliance-conscious",features:[{text:"Everything in Pro",note:""},{text:"Delay report (daily/weekly per user & team)",note:""},{text:"User activity overview & behavioral analytics",note:""},{text:"Advanced notification rules",note:"idle alerts, daily digests, custom thresholds"},{text:"Advanced screenshot settings",note:"1 min intervals, random capture, auto-delete"},{text:"Slack integration",note:"daily/weekly summaries, idle alert bot"},{text:"Jira/Linear integration",note:"task import, time sync to tickets"},{text:"Google Calendar bidirectional task sync",note:""},{text:"AI weekly summary",note:"anomaly detection, top performers, workload tips"},{text:"Custom productivity categories",note:"beyond default classifications"},{text:"Multiple company workspaces (up to 3)",note:""},{text:"Priority email support (24h SLA)",note:""},{text:"24-month data retention",note:""}]},{id:"enterprise",label:"Enterprise",price:null,color:"tier-e",icon:"🟣",desc:"Custom contracts · Unlimited data · Full compliance",tagline:"For 200+ person companies, global teams, DAOs, regulated industries",features:[{text:"Everything in Premium",note:""},{text:"Volume discounts (50+ seats)",note:""},{text:"Dedicated account manager",note:""},{text:"Priority onboarding & setup",note:""},{text:"Custom data retention policies",note:""},{text:"Unlimited workspaces",note:""},{text:"Custom training sessions",note:""},{text:"Quarterly account reviews",note:""},{text:"Early access to new features",note:""},{text:"Priority 24/7 support",note:"dedicated Slack/email channel"}]}];
+const DEFAULT_ADDONS=[{"icon":"🧠","name":"AI Productivity Insights","tags":["ai"],"pricing":{"basic":null,"pro":3,"premium":0,"enterprise":0},"tt":["AI weekly summaries & anomaly detection","Burnout risk scoring","Coaching recommendations","Focus vs meeting time tracking"],"ttCompat":"Pro & above (included in Premium+)","full":"Leverage AI to analyze work patterns, detect burnout risks, and generate coaching recommendations.","feats":["AI-generated daily & weekly summaries","Burnout risk scoring with proactive alerts","Work pattern trend analysis & anomaly detection","Personalized coaching recommendations per user","Focus time vs meeting time tracking","Comparative team productivity benchmarks"],"plans":["Pro","Premium","Enterprise"],"uc":"Perfect for team leads managing 10+ remote employees.","tierPricing":{"basic":"N/A","pro":"$3/u","premium":"Included","enterprise":"Included"}},{"icon":"🔗","name":"Advanced Integrations","tags":["new"],"pricing":{"basic":null,"pro":3,"premium":0,"enterprise":0},"tt":["Slack, Discord, Jira, GitHub, Linear","Custom webhook support","Zapier & Make automation","Bi-directional data sync"],"ttCompat":"Pro & above (included in Premium+)","full":"Connect to 50+ tools — Slack, Jira, Linear, GitHub, Discord, and more.","feats":["Pre-built connectors: Jira, Asana, Trello, Monday, Linear","Slack & Discord bot integration","Zapier & Make automation","Custom webhook support","Real-time bi-directional data sync","Microsoft Teams activity correlation"],"plans":["Pro","Premium","Enterprise"],"uc":"Ideal for teams juggling multiple SaaS tools.","tierPricing":{"basic":"N/A","pro":"$3/u","premium":"Included","enterprise":"Included"}},{"icon":"📊","name":"Custom Productivity Categories","tags":[],"pricing":{"basic":null,"pro":2,"premium":0,"enterprise":0},"tt":["Define custom app/site categories","Beyond Productive/Unproductive/Neutral","E.g. Communication, Learning, Admin","Per-team category rules"],"ttCompat":"Pro & above (included in Premium+)","full":"Go beyond default classification. Define custom categories that fit your workflow.","feats":["Unlimited custom categories","Per-team classification rules","Category-based reporting","Bulk URL/app assignment","Import/export configs","Historical reclassification"],"plans":["Pro","Premium","Enterprise"],"uc":"Great for specialized workflows.","tierPricing":{"basic":"N/A","pro":"$2/u","premium":"Included","enterprise":"Included"}},{"icon":"🗄️","name":"Extended Data History","tags":[],"pricing":{"basic":1,"pro":1,"premium":1,"enterprise":0},"tt":["36-month data retention","Compliance-ready exports","Historical trend reporting","Encrypted automated backups"],"ttCompat":"All plans","full":"Extend retention to 3 years for compliance and long-term analysis.","feats":["36-month data retention","Compliance exports: CSV, JSON, PDF","Historical trend & YoY reports","Automated encrypted backups","Granular deletion controls","Audit trail for data access"],"plans":["Basic","Pro","Premium","Enterprise"],"uc":"Must-have for regulated industries.","tierPricing":{"basic":"$1/u","pro":"$1/u","premium":"$1/u","enterprise":"Included"}},{"icon":"📞","name":"Priority Phone Support","tags":[],"pricing":{"basic":5,"pro":5,"premium":0,"enterprise":0},"tt":["Dedicated line 9am–6pm EST","< 2 min avg pickup","Priority ticket escalation","Dedicated account manager (25+ users)"],"ttCompat":"Basic & Pro (included in Premium+)","full":"Skip the queue. Direct phone line with priority escalation.","feats":["Direct phone line Mon–Fri","< 2 min average pickup","Priority ticket escalation 4h SLA","Dedicated account manager 25+ users","Monthly check-in calls","Early access to beta features"],"plans":["Basic","Pro"],"uc":"Best for teams without dedicated IT staff.","tierPricing":{"basic":"$5/u","pro":"$5/u","premium":"Included","enterprise":"Included"}},{"icon":"🌐","name":"Multi-Language Support","tags":[],"pricing":{"basic":1,"pro":1,"premium":1,"enterprise":0},"tt":["15+ languages incl. CJK & Arabic","Localized dashboards & reports","Auto-detect user locale","RTL language support"],"ttCompat":"All plans","full":"Fully localized interface in 15+ languages with RTL support.","feats":["15+ languages","Localized dashboard & notifications","Auto-detect locale","Custom translation overrides","RTL support","Multi-language PDF reports"],"plans":["Basic","Pro","Premium","Enterprise"],"uc":"Essential for distributed global teams.","tierPricing":{"basic":"$1/u","pro":"$1/u","premium":"$1/u","enterprise":"Included"}},{"icon":"📅","name":"Shift Scheduling & Attendance","tags":["new"],"pricing":{"basic":null,"pro":4,"premium":0,"enterprise":0},"tt":["Shift templates & scheduling","Overtime requests & approval","Attendance & delay tracking","Shift swap & coverage tools"],"ttCompat":"Pro & above (included in Premium+)","full":"Full shift management with templates, overtime approval, and attendance tracking.","feats":["Create & assign shift templates","Overtime request & approval","Attendance & delay reporting","Shift swap management","Auto-notify late arrivals","Calendar coverage overview"],"plans":["Pro","Premium","Enterprise"],"uc":"Ideal for operations teams with hourly workers.","tierPricing":{"basic":"N/A","pro":"$4/u","premium":"Included","enterprise":"Included"}},{"icon":"💰","name":"Payroll & Contractor Management","tags":["new"],"pricing":{"basic":null,"pro":null,"premium":3,"enterprise":0},"tt":["Contractor vs employee classification","Hourly rate → auto pay calc","Payroll run history","Web3 wallet / crypto payroll ready"],"ttCompat":"Premium & Enterprise","full":"Classify team members, set hourly rates, view payroll history. Crypto payroll on Enterprise.","feats":["Contractor vs employee toggle","Hourly rate → auto pay calc","Payroll run history","CSV/PDF exports","Web3 wallet field (Enterprise)","Multi-currency support"],"plans":["Premium","Enterprise"],"uc":"Perfect for mixed contractor/employee teams.","tierPricing":{"basic":"N/A","pro":"N/A","premium":"$3/u","enterprise":"Included"}},{"icon":"🏖️","name":"Time Off Management","tags":["new"],"pricing":{"basic":null,"pro":3,"premium":0,"enterprise":0},"tt":["PTO, sick leave & vacation tracking","Approval workflows per manager","Team calendar with coverage view","Accrual policies & carryover rules"],"ttCompat":"Pro & above (included in Premium+)","full":"Complete time off management with PTO, sick leave, vacation, and custom leave types. Managers approve requests with full visibility into team coverage and accrual balances.","feats":["PTO, sick leave, vacation & custom leave types","Manager approval workflows with notifications","Team calendar with coverage & conflict view","Accrual policies with carryover rules","Leave balance tracking per employee","Holiday calendar by country/region"],"plans":["Pro","Premium","Enterprise"],"uc":"Essential for any team that needs to track leave balances, prevent scheduling conflicts, and keep payroll accurate.","tierPricing":{"basic":"N/A","pro":"$3/u","premium":"Included","enterprise":"Included"}}];
 
-      { text:'Dedicated account manager', note:'' },
-      { text:'Priority onboarding & setup', note:'' },
-      { text:'Custom data retention policies', note:'' },
-      { text:'Unlimited workspaces', note:'' },
-      { text:'Custom training sessions', note:'' },
-      { text:'Quarterly account reviews', note:'' },
-      { text:'Early access to new features', note:'' },
-      { text:'Priority 24/7 support', note:'dedicated Slack/email channel' },
-    ],
-  },
+let PLANS=JSON.parse(JSON.stringify(DEFAULT_PLANS));
+let ADDONS=JSON.parse(JSON.stringify(DEFAULT_ADDONS));
+let activeTab=0,billingAnnual=false,editMode=false;
+const S={intier:{basic:{},pro:{},premium:{},enterprise:{}},drawer:{basic:{},pro:{},premium:{},enterprise:{}}};
+const CONCEPTS=[
+  {id:"c-intier",label:"In-Tier",color:"var(--orange)",colorDim:"var(--orange-dim)",colorBorder:"rgba(245,158,11,0.25)",title:'Add-ons <em>Per Tier</em>',sub:"Each plan card shows core features with a collapsible add-ons section."},
+  {id:"c-drawer",label:"Drawer",color:"var(--cyan)",colorDim:"var(--cyan-dim)",colorBorder:"rgba(6,182,212,0.25)",title:'Customize <em>Per Plan</em>',sub:"Clean tier cards with a Customize button that reveals a slide-down drawer."}
 ];
 
-const ADDONS = [
-  {
-    icon:'🧠', name:'AI Productivity Insights', tags:['ai'],
-    pricing:{ basic:null, pro:3, premium:0, enterprise:0 },
-    tt:['AI weekly summaries & anomaly detection','Burnout risk scoring','Coaching recommendations','Focus vs meeting time tracking'],
-    ttCompat:'Pro & above (included in Premium+)',
-    full:'Leverage AI to analyze work patterns, detect burnout risks before they escalate, and generate personalized coaching recommendations for every team member. Includes weekly AI summaries with anomaly detection.',
-    feats:['AI-generated daily & weekly summaries','Burnout risk scoring with proactive alerts','Work pattern trend analysis & anomaly detection','Personalized coaching recommendations per user','Focus time vs meeting time tracking','Comparative team productivity benchmarks'],
-    plans:['Pro','Premium','Enterprise'],
-    uc:'Perfect for team leads managing 10+ remote employees who want early warning on burnout without micromanaging.',
-    tierPricing:{ basic:'N/A', pro:'$3/u', premium:'Included', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-pr', premium:'c4-inc', enterprise:'c4-inc' },
-  },
-  {
-    icon:'🔗', name:'Advanced Integrations', tags:['new'],
-    pricing:{ basic:null, pro:3, premium:0, enterprise:0 },
-    tt:['Slack, Discord, Jira, GitHub, Linear','Custom webhook support','Zapier & Make automation','Bi-directional data sync'],
-    ttCompat:'Pro & above (included in Premium+)',
-    full:'Connect to 50+ tools your team already uses — Slack, Jira, Linear, GitHub, Discord, and more. Custom webhooks and Zapier support extend this to virtually any API.',
-    feats:['Pre-built connectors: Jira, Asana, Trello, Monday, Linear','Slack & Discord bot integration','Zapier & Make (Integromat) automation','Custom webhook support for any API','Real-time bi-directional data sync','Microsoft Teams activity correlation'],
-    plans:['Pro','Premium','Enterprise'],
-    uc:'Ideal for teams juggling multiple SaaS tools who want time data flowing automatically into PM and billing systems.',
-    tierPricing:{ basic:'N/A', pro:'$3/u', premium:'Included', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-pr', premium:'c4-inc', enterprise:'c4-inc' },
-  },
-  {
-    icon:'📊', name:'Custom Productivity Categories', tags:[],
-    pricing:{ basic:null, pro:2, premium:0, enterprise:0 },
-    tt:['Define custom app/site categories','Beyond Productive/Unproductive/Neutral','E.g. "Communication", "Learning", "Admin"','Per-team category rules'],
-    ttCompat:'Pro & above (included in Premium+)',
-    full:'Go beyond the default Productive/Unproductive/Neutral classification. Define custom categories like "Communication", "Learning", "Admin", or any label that fits your workflow. Apply rules per team.',
-    feats:['Unlimited custom categories','Per-team classification rules','Category-based reporting & dashboards','Bulk URL/app assignment','Import/export category configs','Historical reclassification'],
-    plans:['Pro','Premium','Enterprise'],
-    uc:'Great for companies with specialized workflows where default productivity labels don\'t capture what "productive" really means for each role.',
-    tierPricing:{ basic:'N/A', pro:'$2/u', premium:'Included', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-pr', premium:'c4-inc', enterprise:'c4-inc' },
-  },
-  {
-    icon:'🗄️', name:'Extended Data History', tags:[],
-    pricing:{ basic:1, pro:1, premium:1, enterprise:0 },
-    tt:['36-month data retention','Compliance-ready exports','Historical trend reporting','Encrypted automated backups'],
-    ttCompat:'All plans',
-    full:'Extend retention to a full 3 years. Essential for regulatory compliance, long-term trend analysis, and historical reporting. All data encrypted at rest with granular audit controls.',
-    feats:['36-month data retention','Compliance-ready exports: CSV, JSON, PDF','Historical trend & YoY comparison reports','Automated daily encrypted backups','Granular data deletion controls per user','Audit trail for every data access event'],
-    plans:['Basic','Pro','Premium','Enterprise'],
-    uc:'Must-have for companies in regulated industries (finance, healthcare, legal) requiring long-term records.',
-    tierPricing:{ basic:'$1/u', pro:'$1/u', premium:'$1/u', enterprise:'Included' },
-    tierColors:{ basic:'c4-pr', pro:'c4-pr', premium:'c4-pr', enterprise:'c4-inc' },
-  },
-  {
-    icon:'📞', name:'Priority Phone Support', tags:[],
-    pricing:{ basic:5, pro:5, premium:0, enterprise:0 },
-    tt:['Dedicated line 9am–6pm EST','< 2 min avg pickup','Priority ticket escalation','Dedicated account manager (25+ users)'],
-    ttCompat:'Basic & Pro (included in Premium+)',
-    full:'Skip the queue. Direct phone line during business hours, priority ticket escalation with a 4-hour SLA, and a dedicated account manager for teams of 25 or more.',
-    feats:['Direct phone line 9am–6pm EST Mon–Fri','< 2 minute average call pickup time','Priority ticket escalation with 4h SLA','Dedicated account manager for 25+ users','Monthly check-in and strategy calls','Early access to beta features'],
-    plans:['Basic','Pro'],
-    uc:'Best for teams without dedicated IT staff who need fast, reliable human support when things go wrong.',
-    tierPricing:{ basic:'$5/u', pro:'$5/u', premium:'Included', enterprise:'Included' },
-    tierColors:{ basic:'c4-pr', pro:'c4-pr', premium:'c4-inc', enterprise:'c4-inc' },
-  },
-  {
-    icon:'🌐', name:'Multi-Language Support', tags:[],
-    pricing:{ basic:1, pro:1, premium:1, enterprise:0 },
-    tt:['15+ languages incl. CJK & Arabic','Localized dashboards & reports','Auto-detect user locale','RTL language support'],
-    ttCompat:'All plans',
-    full:'Fully localized interface and reports in 15+ languages. Every team member sees the platform in their preferred language with RTL support for Arabic and Hebrew.',
-    feats:['15+ languages: Spanish, French, German, Chinese, Japanese, Korean, Arabic…','Fully localized dashboard, reports & email notifications','Auto-detect from browser/system locale','Custom translation overrides for company terminology','RTL (right-to-left) language support','Multi-language PDF report generation'],
-    plans:['Basic','Pro','Premium','Enterprise'],
-    uc:'Essential for distributed teams across multiple countries who need everyone working in their native language.',
-    tierPricing:{ basic:'$1/u', pro:'$1/u', premium:'$1/u', enterprise:'Included' },
-    tierColors:{ basic:'c4-pr', pro:'c4-pr', premium:'c4-pr', enterprise:'c4-inc' },
-  },
-  {
-    icon:'📅', name:'Shift Scheduling & Attendance', tags:['new'],
-    pricing:{ basic:null, pro:4, premium:0, enterprise:0 },
-    tt:['Shift templates & scheduling','Overtime requests & approval','Attendance & delay tracking','Shift swap & coverage tools'],
-    ttCompat:'Pro & above (included in Premium+)',
-    full:'Full shift management with templates, overtime approval workflows, attendance/delay tracking, and shift swap capabilities. Perfect for teams with rotating schedules or hourly workers.',
-    feats:['Create & assign shift templates','Overtime request & approval workflow','Daily/weekly attendance & delay reporting','Shift swap & coverage management','Auto-notify for late arrivals','Calendar view with team coverage overview'],
-    plans:['Pro','Premium','Enterprise'],
-    uc:'Ideal for operations teams, agencies with shift work, or any company managing hourly workers across time zones.',
-    tierPricing:{ basic:'N/A', pro:'$4/u', premium:'Included', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-pr', premium:'c4-inc', enterprise:'c4-inc' },
-  },
-  {
-    icon:'🔒', name:'Compliance & Audit Logs', tags:[],
-    pricing:{ basic:null, pro:null, premium:3, enterprise:0 },
-    tt:['Full audit logs for every admin action','Compliance exports (SOC2-ready)','IP allowlisting','GDPR data export per user'],
-    ttCompat:'Premium & Enterprise',
-    full:'Enterprise-grade compliance tooling: full audit logs tracking every admin action, IP allowlisting, GDPR one-click data export per employee, and automated screenshot deletion policies with audit trails.',
-    feats:['Full audit log — every admin action tracked','IP allowlisting for login security','GDPR one-click "Export my data" per user','Automated screenshot deletion policies','SOC2-ready compliance exports','Admin activity reports & alerts'],
-    plans:['Premium','Enterprise'],
-    uc:'Critical for companies in regulated industries — finance, healthcare, legal, government — where audit trails are non-negotiable.',
-    tierPricing:{ basic:'N/A', pro:'N/A', premium:'$3/u', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-no', premium:'c4-pr', enterprise:'c4-inc' },
-  },
-  {
-    icon:'💰', name:'Payroll & Contractor Management', tags:['new'],
-    pricing:{ basic:null, pro:null, premium:3, enterprise:0 },
-    tt:['Contractor vs employee classification','Hourly rate per user → auto pay calc','Payroll run history','Web3 wallet / crypto payroll ready'],
-    ttCompat:'Premium & Enterprise',
-    full:'Classify team members as contractors or employees, set hourly rates for automatic pay calculation from tracked hours, and view full payroll run history. Crypto payroll via Web3 wallet integration on Enterprise.',
-    feats:['Contractor vs employee toggle per user','Hourly rate field → automatic pay calculation','Payroll run history per user','Payroll-ready CSV/PDF exports','Web3 wallet address field (Enterprise)','Multi-currency support'],
-    plans:['Premium','Enterprise'],
-    uc:'Perfect for companies managing a mix of contractors and employees, especially those exploring crypto payroll for global teams.',
-    tierPricing:{ basic:'N/A', pro:'N/A', premium:'$3/u', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-no', premium:'c4-pr', enterprise:'c4-inc' },
-  },
-  {
-    icon:'📈', name:'Executive Dashboard & BI Export', tags:['ai'],
-    pricing:{ basic:null, pro:null, premium:2, enterprise:0 },
-    tt:['Company-wide KPI dashboard','Department rollup & 12-month trends','Custom webhook to BI tools','White-labeled PDF reports'],
-    ttCompat:'Premium & Enterprise',
-    full:'Get a bird\'s-eye view of your entire company with executive KPI dashboards, department-level rollups, and 12-month trend analysis. Push data to Tableau, Looker, or Power BI via custom webhooks. Generate white-labeled PDF reports for client billing.',
-    feats:['Company-wide KPI dashboard','Department-level rollup views','12-month trend analysis & comparisons','Custom webhook to any BI tool (Tableau, Looker, Power BI)','White-labeled PDF reports with client logo','Scheduled report delivery to stakeholders'],
-    plans:['Premium','Enterprise'],
-    uc:'For C-level executives and department heads who need high-level insights without digging into individual reports.',
-    tierPricing:{ basic:'N/A', pro:'N/A', premium:'$2/u', enterprise:'Included' },
-    tierColors:{ basic:'c4-no', pro:'c4-no', premium:'c4-pr', enterprise:'c4-inc' },
-  },
-];
+function toggleTheme(){const d=document.documentElement.getAttribute("data-theme")==="dark";document.documentElement.setAttribute("data-theme",d?"light":"dark");document.getElementById("theme-lbl").textContent=d?"Light":"Dark"}
+function toggleEdit(){editMode=!editMode;document.body.classList.toggle("editing",editMode);document.getElementById("edit-bar").classList.toggle("show",editMode);document.getElementById("edit-btn").classList.toggle("on",editMode);document.getElementById("edit-lbl").textContent=editMode?"Editing…":"Edit Mode";document.getElementById("edit-icon").textContent=editMode?"🔧":"✏️";renderAll()}
+function exportJSON(){const d=JSON.stringify({plans:PLANS,addons:ADDONS},null,2);navigator.clipboard.writeText(d).then(()=>{const b=event.target;b.textContent="✓ Copied!";setTimeout(()=>b.textContent="📋 Copy JSON",1500)}).catch(()=>showImportWith(d))}
+function showImport(){document.getElementById("import-modal").classList.add("show");document.getElementById("import-ta").value=""}
+function showImportWith(d){document.getElementById("import-modal").classList.add("show");document.getElementById("import-ta").value=d}
+function hideImport(){document.getElementById("import-modal").classList.remove("show")}
+function doImport(){try{const d=JSON.parse(document.getElementById("import-ta").value);if(d.plans)PLANS=d.plans;if(d.addons)ADDONS=d.addons;hideImport();renderAll()}catch(e){alert("Invalid JSON: "+e.message)}}
+function resetData(){if(!confirm("Reset all plans & add-ons to defaults?"))return;PLANS=JSON.parse(JSON.stringify(DEFAULT_PLANS));ADDONS=JSON.parse(JSON.stringify(DEFAULT_ADDONS));renderAll()}
+function downloadHTML(){const blob=new Blob(["<!DOCTYPE html>\n"+document.documentElement.outerHTML],{type:"text/html"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="staffco_pricing.html";a.click();URL.revokeObjectURL(a.href)}
 
-const CONCEPTS = [
-  { id:'c-intier', label:'In-Tier',  color:'var(--orange)', colorDim:'var(--orange-dim)', colorBorder:'rgba(245,158,11,0.25)', title:'Add-ons <em>Per Tier</em>', sub:'Each plan card shows its core features with a collapsible add-ons section. Prices adjust per tier — many are included free on higher plans.' },
-  { id:'c-drawer', label:'Drawer',   color:'var(--cyan)',   colorDim:'var(--cyan-dim)',   colorBorder:'rgba(6,182,212,0.25)',  title:'Customize <em>Per Plan</em>', sub:'Clean tier cards with a "Customize" button that reveals a smooth slide-down drawer with toggles and live running totals.' },
-];
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function updatePlanField(pi,f,el){PLANS[pi][f]=el.textContent.trim()}
+function updatePlanPrice(pi,el){const v=el.textContent.trim().replace(/[^0-9.]/g,"");PLANS[pi].price=v?parseFloat(v):null}
+function updateFeatureText(pi,fi,el){PLANS[pi].features[fi].text=el.textContent.trim()}
+function updateFeatureNote(pi,fi,el){PLANS[pi].features[fi].note=el.textContent.trim()}
+function removeFeature(pi,fi){PLANS[pi].features.splice(fi,1);renderAll()}
+function addFeature(pi){PLANS[pi].features.push({text:"New feature",note:""});renderAll()}
+function moveFeature(pi,fi,dir){const f=PLANS[pi].features;const n=fi+dir;if(n<0||n>=f.length)return;[f[fi],f[n]]=[f[n],f[fi]];renderAll()}
 
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
-let activeTab = 0;
-let billingAnnual = false;
-const S = {
-  intier: { basic:{}, pro:{}, premium:{}, enterprise:{} },
-  drawer: { basic:{}, pro:{}, premium:{}, enterprise:{} },
-};
+function renderTabs(){document.getElementById("tabs-container").innerHTML=CONCEPTS.map((c,i)=>`<button class="tab ${i===activeTab?"active":""}" onclick="switchTab(${i})"><span class="tab-dot"></span>${c.label}</button>`).join("")}
+function switchTab(i){activeTab=i;renderTabs();document.querySelectorAll(".concept").forEach((el,j)=>el.classList.toggle("active",j===i))}
+function toggleBilling(){billingAnnual=!billingAnnual;renderAll()}
+function getPrice(b){if(!b)return null;return billingAnnual?Math.round(b*.83):b}
+function fmtPlanPrice(p,pi){if(!p.price)return'<span style="font-size:18px">Custom</span>';const pr=getPrice(p.price);if(editMode)return`<span contenteditable="true" data-editable spellcheck="false" onblur="updatePlanPrice(${pi},this)" style="min-width:20px;display:inline-block">$${pr}</span><span class="dm"> /user/mo</span>`;return`$${pr}<span class="dm"> /user/mo</span>`}
 
-function toggleTheme() {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('theme-lbl').textContent = isDark ? 'Light' : 'Dark';
-}
+function openPanel(idx){const a=ADDONS[idx];document.getElementById("pnl-body").innerHTML=`<div class="pnl-icon">${a.icon}</div><div class="pnl-name">${a.name}</div><div class="pnl-price">${getPanelPrice(a)} <span class="dm">/user/mo</span></div><p class="pnl-desc">${a.full}</p><div class="pnl-sec">Pricing by tier</div><div class="pnl-tiers">${PLANS.map(p=>{const price=a.tierPricing[p.id];const color=price==="Included"?"var(--green)":price==="N/A"?"var(--text-muted)":"var(--blue)";return`<div class="pnl-tier"><div class="pnl-tier-n ${p.color}">${p.label}</div><div class="pnl-tier-p" style="color:${color}">${price}</div></div>`}).join("")}</div><div class="pnl-sec">What's included</div><ul class="pnl-fl">${a.feats.map(f=>`<li><span class="ck">✓</span>${f}</li>`).join("")}</ul><div class="pnl-uc"><div class="pnl-uc-l">💡 Best for</div><div class="pnl-uc-t">${a.uc}</div></div>`;document.getElementById("pnl").classList.add("open");document.getElementById("ov").classList.add("open")}
+function closePanel(){document.getElementById("pnl").classList.remove("open");document.getElementById("ov").classList.remove("open")}
+function getPanelPrice(a){for(const t of["pro","premium","basic"]){if(a.pricing[t]!==null&&a.pricing[t]>0)return"$"+a.pricing[t]}return"Varies"}
 
-// TABS
-function renderTabs() {
-  document.getElementById('tabs-container').innerHTML = CONCEPTS.map((c,i) =>
-    `<button class="tab ${i===activeTab?'active':''}" onclick="switchTab(${i})">
-      <span class="tab-dot"></span>${c.label}
-    </button>`
-  ).join('');
-}
-function switchTab(i) {
-  activeTab = i;
-  renderTabs();
-  document.querySelectorAll('.concept').forEach((el,j) => el.classList.toggle('active', j===i));
-}
+let _ttEl=null,_ttTimer=null;
+function _getTT(){if(!_ttEl){_ttEl=document.createElement("div");_ttEl.id="tt-portal";_ttEl.innerHTML='<div class="tt-arrow" id="tt-arrow"></div><div id="tt-inner"></div>';document.body.appendChild(_ttEl)}return _ttEl}
+function showTooltip(el,idx){clearTimeout(_ttTimer);const a=ADDONS[idx];const tt=_getTT();document.getElementById("tt-inner").innerHTML=`<div class="tt-name">${a.icon} ${a.name}</div><ul class="tt-list">${a.tt.map(t=>`<li>${t}</li>`).join("")}</ul><div class="tt-avail">Available on: ${a.ttCompat}</div>`;tt.style.display="block";tt.classList.remove("show");const r=el.getBoundingClientRect(),w=tt.offsetWidth,h=tt.offsetHeight,gap=10,as=5,arrow=document.getElementById("tt-arrow");let top,ab;if(r.top-h-gap>8){top=r.top-h-gap;ab=true}else{top=r.bottom+gap;ab=false}let left=r.left+r.width/2-w/2;left=Math.max(8,Math.min(left,innerWidth-w-8));tt.style.left=left+"px";tt.style.top=(top+scrollY)+"px";const al=(r.left+r.width/2)-left-as;arrow.style.left=Math.max(8,Math.min(al,w-18))+"px";if(ab){arrow.style.bottom=(-as-1)+"px";arrow.style.top="auto";arrow.style.transform="rotate(45deg)";arrow.style.borderRight="1px solid var(--border2)";arrow.style.borderBottom="1px solid var(--border2)";arrow.style.borderTop="none";arrow.style.borderLeft="none"}else{arrow.style.top=(-as-1)+"px";arrow.style.bottom="auto";arrow.style.transform="rotate(225deg)";arrow.style.borderRight="1px solid var(--border2)";arrow.style.borderBottom="1px solid var(--border2)";arrow.style.borderTop="none";arrow.style.borderLeft="none"}requestAnimationFrame(()=>tt.classList.add("show"))}
+function hideTooltip(d=120){clearTimeout(_ttTimer);_ttTimer=setTimeout(()=>{if(_ttEl){_ttEl.classList.remove("show");setTimeout(()=>{if(_ttEl&&!_ttEl.classList.contains("show"))_ttEl.style.display="none"},160)}},d)}
+document.addEventListener("mouseover",e=>{const b=e.target.closest(".ibtn[data-tt]");if(b)showTooltip(b,parseInt(b.dataset.tt))});
+document.addEventListener("mouseout",e=>{const b=e.target.closest(".ibtn[data-tt]");if(b)hideTooltip()});
 
-// BILLING
-function toggleBilling() {
-  billingAnnual = !billingAnnual;
-  renderAll();
-}
-function getPrice(base) {
-  if (!base) return null;
-  return billingAnnual ? Math.round(base * 0.83) : base;
-}
-function fmtPlanPrice(plan) {
-  if (!plan.price) return '<span style="font-size:18px">Custom</span>';
-  const p = getPrice(plan.price);
-  return `$${p}<span class="dm"> /user/mo</span>`;
-}
+function planFeaturesHTML(plan,pi){const cm={basic:"var(--green)",pro:"var(--blue)",premium:"var(--orange)",enterprise:"var(--purple)"};const color=cm[plan.id]||"var(--blue)";let h='<ul class="tier-feat-list">';plan.features.forEach((f,fi)=>{h+=`<li><span class="tier-feat-check" style="color:${color}">✓</span><span class="tier-feat-text">${editMode?`<span contenteditable="true" data-editable spellcheck="false" onblur="updateFeatureText(${pi},${fi},this)">${esc(f.text)}</span>${f.note||editMode?`<span class="tier-feat-note" contenteditable="true" data-editable spellcheck="false" onblur="updateFeatureNote(${pi},${fi},this)" style="min-width:30px">${esc(f.note)}</span>`:""}`:`${esc(f.text)}${f.note?`<span class="tier-feat-note">${esc(f.note)}</span>`:""}`}</span><span class="feat-actions"><button class="feat-act" onclick="moveFeature(${pi},${fi},-1)" title="Up">↑</button><button class="feat-act" onclick="moveFeature(${pi},${fi},1)" title="Down">↓</button><button class="feat-act del" onclick="removeFeature(${pi},${fi})" title="Remove">✕</button></span></li>`});h+="</ul>";h+=`<button class="add-feat-btn" onclick="addFeature(${pi})">+ Add Feature</button>`;return h}
+function calcTotal(as,tid){let t=0;Object.entries(as).forEach(([i,on])=>{if(on){const p=ADDONS[i].pricing[tid];if(p&&p>0)t+=p}});return t}
+function billingHTML(){return`<div class="billing-toggle"><span class="billing-opt ${!billingAnnual?"active":""}" onclick="toggleBilling()">Monthly</span><div class="billing-track ${billingAnnual?"annual":""}" onclick="toggleBilling()"><div class="billing-track-thumb"></div></div><span class="billing-opt ${billingAnnual?"active":""}" onclick="toggleBilling()">Annual</span>${billingAnnual?'<span class="billing-save">Save ~17%</span>':""}</div>`}
+function chHTML(idx){const c=CONCEPTS[idx];return`<div class="ch"><div class="ch-badge" style="color:${c.color};background:${c.colorDim};border:1px solid ${c.colorBorder}">Concept ${idx+1} — ${c.label}</div><h2>${c.title}</h2><p>${c.sub}</p></div>`}
 
-// PANEL
-function openPanel(idx) {
-  const a = ADDONS[idx];
-  document.getElementById('pnl-body').innerHTML = `
-    <div class="pnl-icon">${a.icon}</div>
-    <div class="pnl-name">${a.name}</div>
-    <div class="pnl-price">${getPanelPrice(a)} <span class="dm">/user/mo</span></div>
-    <p class="pnl-desc">${a.full}</p>
-    <div class="pnl-sec">Pricing by tier</div>
-    <div class="pnl-tiers">
-      ${PLANS.map(p => {
-        const price = a.tierPricing[p.id];
-        const color = price === 'Included' ? 'var(--green)' : price === 'N/A' ? 'var(--text-muted)' : 'var(--blue)';
-        return `<div class="pnl-tier">
-          <div class="pnl-tier-n ${p.color}">${p.label}</div>
-          <div class="pnl-tier-p" style="color:${color}">${price}</div>
-        </div>`;
-      }).join('')}
-    </div>
-    <div class="pnl-sec">What's included</div>
-    <ul class="pnl-fl">${a.feats.map(f=>`<li><span class="ck">✓</span>${f}</li>`).join('')}</ul>
-    <div class="pnl-uc"><div class="pnl-uc-l">💡 Best for</div><div class="pnl-uc-t">${a.uc}</div></div>
-  `;
-  document.getElementById('pnl').classList.add('open');
-  document.getElementById('ov').classList.add('open');
-}
-function closePanel() {
-  document.getElementById('pnl').classList.remove('open');
-  document.getElementById('ov').classList.remove('open');
-}
-function getPanelPrice(a) {
-  const tiers = ['pro','premium','basic'];
-  for (const t of tiers) { if (a.pricing[t] !== null && a.pricing[t] > 0) return '$' + a.pricing[t]; }
-  return 'Varies';
-}
+function renderInTier(){let h=chHTML(0)+billingHTML()+'<div class="c-inner"><div class="c2-tiers">';PLANS.forEach((p,pi)=>{const isPop=pi===2;h+=`<div class="card c2-tier">${isPop?'<div class="c2-popular-strip"></div>':""}<div style="margin-bottom:16px"><div class="c2-tier-n ${p.color}">${p.icon} ${editMode?`<span contenteditable="true" data-editable spellcheck="false" onblur="updatePlanField(${pi},'label',this)">${esc(p.label)}</span>`:esc(p.label)}${isPop?' <span class="tag tag-pop" style="font-size:8px">POPULAR</span>':""}</div><div class="c2-tier-price">${fmtPlanPrice(p,pi)}</div><div class="c2-tier-sub">${editMode?`<span contenteditable="true" data-editable spellcheck="false" onblur="updatePlanField(${pi},'tagline',this)">${esc(p.tagline)}</span>`:esc(p.tagline)}</div></div><div class="c2-divider"></div>${planFeaturesHTML(p,pi)}<div class="c2-divider"></div><button class="c2-acc-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Add-ons <span class="arr">▾</span></button><div class="c2-acc"><div class="c2-acc-inner" id="it-${p.id}"></div></div></div>`});h+="</div></div>";document.getElementById("c-intier").innerHTML=h;PLANS.forEach(p=>renderInTierAddons(p.id))}
+function renderInTierAddons(tid){const el=document.getElementById("it-"+tid);if(!el)return;const plan=PLANS.find(p=>p.id===tid);let html="";ADDONS.forEach((a,i)=>{const price=a.pricing[tid];if(price===null)return;const isInc=price===0,on=S.intier[tid][i]||false;html+=`<div class="c2-row"><span class="c2-ri">${a.icon}</span><span class="c2-rn">${a.name} ${a.tags.map(t=>`<span class="tag tag-${t}" style="margin-left:4px">${t.toUpperCase()}</span>`).join("")}</span><span class="c2-rp ${isInc?"inc":""}">${isInc?"✓ Incl.":`$${price}/u`}</span><button class="ibtn" data-tt="${i}" onclick="openPanel(${i})">ⓘ</button>${!isInc?`<label class="tgl"><input type="checkbox" ${on?"checked":""} onchange="S.intier['${tid}'][${i}]=this.checked;renderInTierAddons('${tid}')"><span class="sl"></span></label>`:""}</div>`});const base=getPrice(plan.price)||0,add=calcTotal(S.intier[tid],tid);html+=`<div class="tot-bar"><span class="tot-lbl">Per user total</span><span class="tot-val">${base>0?`$${base+add}`:"Custom"}<span class="dm">/mo</span></span></div>`;el.innerHTML=html}
 
-// TOOLTIP
-let _ttEl = null, _ttTimer = null;
-function _getTT() {
-  if (!_ttEl) {
-    _ttEl = document.createElement('div');
-    _ttEl.id = 'tt-portal';
-    _ttEl.innerHTML = '<div class="tt-arrow" id="tt-arrow"></div><div id="tt-inner"></div>';
-    document.body.appendChild(_ttEl);
-  }
-  return _ttEl;
-}
-function showTooltip(triggerEl, idx) {
-  clearTimeout(_ttTimer);
-  const a = ADDONS[idx];
-  const tt = _getTT();
-  document.getElementById('tt-inner').innerHTML =
-    `<div class="tt-name">${a.icon} ${a.name}</div>
-     <ul class="tt-list">${a.tt.map(t => `<li>${t}</li>`).join('')}</ul>
-     <div class="tt-avail">Available on: ${a.ttCompat}</div>`;
-  tt.style.display = 'block';
-  tt.classList.remove('show');
-  const btnR = triggerEl.getBoundingClientRect();
-  const ttW = tt.offsetWidth;
-  const ttH = tt.offsetHeight;
-  const gap = 10, arrowSize = 5;
-  const arrow = document.getElementById('tt-arrow');
-  let top, arrowOnBottom;
-  if (btnR.top - ttH - gap > 8) { top = btnR.top - ttH - gap; arrowOnBottom = true; }
-  else { top = btnR.bottom + gap; arrowOnBottom = false; }
-  let left = btnR.left + btnR.width / 2 - ttW / 2;
-  left = Math.max(8, Math.min(left, window.innerWidth - ttW - 8));
-  tt.style.left = left + 'px';
-  tt.style.top = (top + window.scrollY) + 'px';
-  const arrowLeft = (btnR.left + btnR.width / 2) - left - arrowSize;
-  arrow.style.left = Math.max(8, Math.min(arrowLeft, ttW - 18)) + 'px';
-  if (arrowOnBottom) {
-    arrow.style.bottom = (-arrowSize - 1) + 'px'; arrow.style.top = 'auto';
-    arrow.style.transform = 'rotate(45deg)';
-    arrow.style.borderRight = '1px solid var(--border2)'; arrow.style.borderBottom = '1px solid var(--border2)';
-    arrow.style.borderTop = 'none'; arrow.style.borderLeft = 'none';
-  } else {
-    arrow.style.top = (-arrowSize - 1) + 'px'; arrow.style.bottom = 'auto';
-    arrow.style.transform = 'rotate(225deg)';
-    arrow.style.borderRight = '1px solid var(--border2)'; arrow.style.borderBottom = '1px solid var(--border2)';
-    arrow.style.borderTop = 'none'; arrow.style.borderLeft = 'none';
-  }
-  requestAnimationFrame(() => tt.classList.add('show'));
-}
-function hideTooltip(delay = 120) {
-  clearTimeout(_ttTimer);
-  _ttTimer = setTimeout(() => {
-    if (_ttEl) {
-      _ttEl.classList.remove('show');
-      setTimeout(() => { if (_ttEl && !_ttEl.classList.contains('show')) _ttEl.style.display = 'none'; }, 160);
-    }
-  }, delay);
-}
-document.addEventListener('mouseover', e => {
-  const btn = e.target.closest('.ibtn[data-tt]');
-  if (btn) showTooltip(btn, parseInt(btn.dataset.tt));
-});
-document.addEventListener('mouseout', e => {
-  const btn = e.target.closest('.ibtn[data-tt]');
-  if (btn) hideTooltip();
-});
+function renderDrawer(){let h=chHTML(1)+billingHTML()+'<div class="c-inner"><div class="c5-tiers">';PLANS.forEach((p,pi)=>{const isPop=pi===2;h+=`<div class="card c5-tier">${isPop?'<div class="c5-pop-strip"></div>':""}<div class="c2-tier-n ${p.color}" style="margin-bottom:5px">${p.icon} ${editMode?`<span contenteditable="true" data-editable spellcheck="false" onblur="updatePlanField(${pi},'label',this)">${esc(p.label)}</span>`:esc(p.label)}${isPop?'&nbsp;<span class="tag tag-pop" style="font-size:8px">POPULAR</span>':""}</div><div class="c2-tier-price">${fmtPlanPrice(p,pi)}</div><div class="tier-tagline">${editMode?`<span contenteditable="true" data-editable spellcheck="false" onblur="updatePlanField(${pi},'tagline',this)">${esc(p.tagline)}</span>`:esc(p.tagline)}</div>${planFeaturesHTML(p,pi)}<button class="c5-cbtn" id="drbtn-${p.id}" onclick="drToggle('${p.id}',this)"><span class="ci">+</span> Customize with Add-ons</button><div class="c5-dr" id="dr-${p.id}"><div class="c5-dr-inner" id="dri-${p.id}"></div></div></div>`});h+="</div></div>";document.getElementById("c-drawer").innerHTML=h}
+function drToggle(tid,btn){const dr=document.getElementById("dr-"+tid);const isOpen=dr.classList.contains("open");btn.classList.toggle("open",!isOpen);dr.classList.toggle("open",!isOpen);if(!isOpen)renderDrawerAddons(tid)}
+function renderDrawerAddons(tid){const el=document.getElementById("dri-"+tid);if(!el)return;const plan=PLANS.find(p=>p.id===tid);let html='<div class="c5-dr-t">Available Add-ons</div>';ADDONS.forEach((a,i)=>{const price=a.pricing[tid];if(price===null)return;const isInc=price===0,on=S.drawer[tid][i]||false;html+=`<div class="c5-row"><span style="font-size:14px">${a.icon}</span><span class="c5-row-n">${a.name} ${a.tags.map(t=>`<span class="tag tag-${t}" style="margin-left:4px">${t.toUpperCase()}</span>`).join("")}</span><span class="c5-row-p" style="color:${isInc?"var(--green)":"var(--blue)"}">${isInc?"✓ Incl.":`$${price}/u`}</span><button class="ibtn" data-tt="${i}" onclick="openPanel(${i})">ⓘ</button>${!isInc?`<label class="tgl"><input type="checkbox" ${on?"checked":""} onchange="S.drawer['${tid}'][${i}]=this.checked;renderDrawerAddons('${tid}')"><span class="sl"></span></label>`:""}</div>`});const base=getPrice(plan.price)||0,add=calcTotal(S.drawer[tid],tid);html+=`<div class="tot-bar"><span class="tot-lbl">Per user total</span><span class="tot-val">${base>0?`$${base+add}`:"Custom"}<span class="dm">/mo</span></span></div>`;el.innerHTML=html}
 
-// HELPERS
-function planFeaturesHTML(plan) {
-  const colorMap = { basic:'var(--green)', pro:'var(--blue)', premium:'var(--orange)', enterprise:'var(--purple)' };
-  const color = colorMap[plan.id] || 'var(--blue)';
-  let h = `<ul class="tier-feat-list">`;
-  plan.features.forEach(f => {
-    h += `<li>
-      <span class="tier-feat-check" style="color:${color}">✓</span>
-      <span class="tier-feat-text">${f.text}${f.note ? `<span class="tier-feat-note">${f.note}</span>` : ''}</span>
-    </li>`;
-  });
-  h += `</ul>`;
-  return h;
-}
-function calcTotal(addonState, tierId) {
-  let t = 0;
-  Object.entries(addonState).forEach(([i, on]) => {
-    if (on) {
-      const p = ADDONS[i].pricing[tierId];
-      if (p && p > 0) t += p;
-    }
-  });
-  return t;
-}
-function billingHTML() {
-  return `<div class="billing-toggle">
-    <span class="billing-opt ${!billingAnnual?'active':''}" onclick="toggleBilling()">Monthly</span>
-    <div class="billing-track ${billingAnnual?'annual':''}" onclick="toggleBilling()">
-      <div class="billing-track-thumb"></div>
-    </div>
-    <span class="billing-opt ${billingAnnual?'active':''}" onclick="toggleBilling()">Annual</span>
-    ${billingAnnual ? '<span class="billing-save">Save ~17%</span>' : ''}
-  </div>`;
-}
-function chHTML(idx) {
-  const c = CONCEPTS[idx];
-  return `<div class="ch">
-    <div class="ch-badge" style="color:${c.color};background:${c.colorDim};border:1px solid ${c.colorBorder}">
-      Concept ${idx+1} — ${c.label}
-    </div>
-    <h2>${c.title}</h2>
-    <p>${c.sub}</p>
-  </div>`;
-}
-
-// ═══════════════════════════════════════════
-// IN-TIER
-// ═══════════════════════════════════════════
-function renderInTier() {
-  let h = chHTML(0);
-  h += billingHTML();
-  h += `<div class="c-inner"><div class="c2-tiers">`;
-  PLANS.forEach((p, pi) => {
-    const isPop = pi === 2;
-    h += `<div class="card c2-tier">
-      ${isPop ? '<div class="c2-popular-strip"></div>' : ''}
-      <div class="c2-tier-hd">
-        <div class="c2-tier-n ${p.color}">${p.icon} ${p.label}${isPop ? ` <span class="tag tag-pop" style="font-size:8px">POPULAR</span>` : ''}</div>
-        <div class="c2-tier-price">${fmtPlanPrice(p)}</div>
-        <div class="c2-tier-sub">${p.tagline}</div>
-      </div>
-      <div class="c2-divider"></div>
-      ${planFeaturesHTML(p)}
-      <div class="c2-divider"></div>
-      <button class="c2-acc-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-        Add-ons <span class="arr">▾</span>
-      </button>
-      <div class="c2-acc">
-        <div class="c2-acc-inner" id="it-${p.id}"></div>
-      </div>
-    </div>`;
-  });
-  h += `</div></div>`;
-  document.getElementById('c-intier').innerHTML = h;
-  PLANS.forEach(p => renderInTierAddons(p.id));
-}
-function renderInTierAddons(tierId) {
-  const el = document.getElementById('it-' + tierId);
-  if (!el) return;
-  const plan = PLANS.find(p => p.id === tierId);
-  let html = '';
-  ADDONS.forEach((a, i) => {
-    const price = a.pricing[tierId];
-    if (price === null) return;
-    const isInc = price === 0;
-    const on = S.intier[tierId][i] || false;
-    html += `<div class="c2-row">
-      <span class="c2-ri">${a.icon}</span>
-      <span class="c2-rn">${a.name} ${a.tags.map(t=>`<span class="tag tag-${t}" style="margin-left:4px">${t.toUpperCase()}</span>`).join('')}</span>
-      <span class="c2-rp ${isInc?'inc':''}">${isInc ? '✓ Incl.' : `$${price}/u`}</span>
-      <button class="ibtn" data-tt="${i}" onclick="openPanel(${i})">ⓘ</button>
-      ${!isInc ? `<label class="tgl"><input type="checkbox" ${on?'checked':''} onchange="S.intier['${tierId}'][${i}]=this.checked;renderInTierAddons('${tierId}')"><span class="sl"></span></label>` : ''}
-    </div>`;
-  });
-  const base = getPrice(plan.price) || 0;
-  const add = calcTotal(S.intier[tierId], tierId);
-  html += `<div class="tot-bar">
-    <span class="tot-lbl">Per user total</span>
-    <span class="tot-val">${base > 0 ? `$${base+add}` : 'Custom'}<span class="dm">/mo</span></span>
-  </div>`;
-  el.innerHTML = html;
-}
-
-// ═══════════════════════════════════════════
-// DRAWER
-// ═══════════════════════════════════════════
-function renderDrawer() {
-  let h = chHTML(1);
-  h += billingHTML();
-  h += `<div class="c-inner"><div class="c5-tiers">`;
-  PLANS.forEach((p, pi) => {
-    const isPop = pi === 2;
-    h += `<div class="card c5-tier">
-      ${isPop ? '<div class="c5-pop-strip"></div>' : ''}
-      <div class="c2-tier-n ${p.color}" style="margin-bottom:5px">${p.icon} ${p.label}${isPop ? `&nbsp;<span class="tag tag-pop" style="font-size:8px">POPULAR</span>` : ''}</div>
-      <div class="c2-tier-price">${fmtPlanPrice(p)}</div>
-      <div class="tier-tagline">${p.tagline}</div>
-      ${planFeaturesHTML(p)}
-      <button class="c5-cbtn" id="drbtn-${p.id}" onclick="drToggle('${p.id}',this)">
-        <span class="ci">+</span> Customize with Add-ons
-      </button>
-      <div class="c5-dr" id="dr-${p.id}">
-        <div class="c5-dr-inner" id="dri-${p.id}"></div>
-      </div>
-    </div>`;
-  });
-  h += `</div></div>`;
-  document.getElementById('c-drawer').innerHTML = h;
-}
-function drToggle(tierId, btn) {
-  const dr = document.getElementById('dr-' + tierId);
-  const isOpen = dr.classList.contains('open');
-  btn.classList.toggle('open', !isOpen);
-  dr.classList.toggle('open', !isOpen);
-  if (!isOpen) renderDrawerAddons(tierId);
-}
-function renderDrawerAddons(tierId) {
-  const el = document.getElementById('dri-' + tierId);
-  if (!el) return;
-  const plan = PLANS.find(p => p.id === tierId);
-  let html = `<div class="c5-dr-t">Available Add-ons</div>`;
-  ADDONS.forEach((a, i) => {
-    const price = a.pricing[tierId];
-    if (price === null) return;
-    const isInc = price === 0;
-    const on = S.drawer[tierId][i] || false;
-    html += `<div class="c5-row">
-      <span style="font-size:14px">${a.icon}</span>
-      <span class="c5-row-n">${a.name} ${a.tags.map(t=>`<span class="tag tag-${t}" style="margin-left:4px">${t.toUpperCase()}</span>`).join('')}</span>
-      <span class="c5-row-p" style="color:${isInc?'var(--green)':'var(--blue)'}">${isInc ? '✓ Incl.' : `$${price}/u`}</span>
-      <button class="ibtn" data-tt="${i}" onclick="openPanel(${i})">ⓘ</button>
-      ${!isInc ? `<label class="tgl"><input type="checkbox" ${on?'checked':''} onchange="S.drawer['${tierId}'][${i}]=this.checked;renderDrawerAddons('${tierId}')"><span class="sl"></span></label>` : ''}
-    </div>`;
-  });
-  const base = getPrice(plan.price) || 0;
-  const add = calcTotal(S.drawer[tierId], tierId);
-  html += `<div class="tot-bar">
-    <span class="tot-lbl">Per user total</span>
-    <span class="tot-val">${base > 0 ? `$${base+add}` : 'Custom'}<span class="dm">/mo</span></span>
-  </div>`;
-  el.innerHTML = html;
-}
-
-// ═══════════════════════════════════════════
-// RENDER ALL
-// ═══════════════════════════════════════════
-function renderAll() {
-  renderInTier();
-  renderDrawer();
-}
-
-renderTabs();
-renderAll();
+function renderAll(){renderInTier();renderDrawer()}
+renderTabs();renderAll();
 </script>
 </body>
 </html>
