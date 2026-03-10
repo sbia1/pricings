@@ -307,7 +307,7 @@ const P=[
    diffFrom:null,
    cols:{left:[{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Dashboard & timeline"},{t:"Daily time report"}],right:[{t:"Up to 20 users"},{t:"1 dept, 3 teams"},{t:"5 tags"},{t:"Email notifications"},{t:"2FA · 3-mo retention"}]},
    tabs:{core:[{t:"Auto & manual time tracking"},{t:"Unlimited projects & tasks"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard"}],advanced:[{t:"Daily time report",n:"view only"},{t:"Edit own time entries"},{t:"Up to 5 tags"}],admin:[{t:"Email notifications"},{t:"2FA & password security"},{t:"Setup wizard"},{t:"3-month retention"}]},
-   cmp:{users:"Up to 20",projects:"Unlimited",tracking:"✓",screenshots:"5 min fixed",scrCtrl:"—",appMon:"Basic",reports:"Daily (view only)",csv:"—",approval:"—",teams:"3 max",tags:"5",orgChart:"—",cal:"—",slack:"—",ai:"—",cats:"—",notif:"Email only",support:"Email",retention:"3 months",ws:"1",am:"—"},
+   cmp:{users:"Up to 20",projects:"Unlimited",tracking:"✓",screenshots:"5 min fixed",scrCtrl:"—",appMon:"Basic",reports:"Daily (view only)",csv:"—",approval:"—",teams:"3 max",tags:"5",orgChart:"—",cal:"—",slack:"—",ai:"—",cats:"—",notif:"Email only",support:"Email",retention:"3 months",ws:"1",am:"—",timeOff:"—"},
   },
   {id:"pro",l:"Pro",pr:14,cl:"tier-p",ic:"🔵",
    tl:"Growing teams of 10–50, agencies & remote-first",cta:"Start Free Trial",
@@ -327,7 +327,7 @@ const P=[
    diffFrom:"Basic",
    cols:{left:[{t:"Time approval workflow"},{t:"Screenshot controls"},{t:"All reports + CSV"},{t:"Productivity rating"},{t:"Calendar sync (2-way)"}],right:[{t:"Unlimited users"},{t:"Unlimited teams"},{t:"Org chart"},{t:"Weekly summaries"},{t:"12-mo retention"}]},
    tabs:{core:[{t:"Time approval workflow"},{t:"Unlimited projects & clients"},{t:"Screenshot controls per user"},{t:"Productivity rating"},{t:"All reporting + CSV"}],advanced:[{t:"Full adjustment history"},{t:"Unlimited teams & managers"},{t:"Org chart"},{t:"Google Calendar sync"},{t:"Weekly summary emails"}],admin:[{t:"Company-wide defaults"},{t:"12-month retention"}]},
-   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1/3/5/10 min",scrCtrl:"Blur, delete",appMon:"Productivity",reports:"All modules",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"2-way",slack:"—",ai:"—",cats:"—",notif:"Email + digest",support:"Email",retention:"12 months",ws:"1",am:"—"},
+   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1/3/5/10 min",scrCtrl:"Blur, delete",appMon:"Productivity",reports:"All modules",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"2-way",slack:"—",ai:"—",cats:"—",notif:"Email + digest",support:"Email",retention:"12 months",ws:"1",am:"—",timeOff:"—"},
   },
   {id:"premium",l:"Premium",pr:22,cl:"tier-b",ic:"🟠",pop:true,
    tl:"Mid-size companies (50–200), HR & compliance teams",cta:"Start Free Trial",
@@ -335,19 +335,19 @@ const P=[
      tracking:[{t:"Everything in Pro"}],
      monitoring:[{t:"Advanced screenshots",n:"1 min, random, auto-delete"},{t:"Behavioral analytics & activity overview"}],
      reporting:[{t:"Delay report per user & team"},{t:"AI weekly summary",n:"anomaly detection, workload tips"},{t:"Custom productivity categories"}],
-     team:[{t:"Multiple workspaces (up to 3)"}],
+     team:[{t:"Multiple workspaces (up to 3)"},{t:"Time Off Management",n:"PTO, sick leave, vacation, approvals"}],
      integrations:[{t:"Slack integration",n:"summaries, idle bot"},{t:"Jira / Linear integration",n:"task import, time sync"},{t:"Calendar bidirectional task sync"}],
      admin:[{t:"Advanced notification rules",n:"idle alerts, digests, thresholds"},{t:"Priority email support (24h)"},{t:"24-month data retention"}],
    },
-   hero:[{t:"Everything in Pro, plus:"},{t:"AI weekly summary & anomaly detection"},{t:"Slack + Jira / Linear integrations"},{t:"Behavioral analytics"},{t:"Advanced screenshots",n:"1 min, random, auto-delete"},{t:"Custom productivity categories"}],
-   rest:[{t:"Delay report per user & team"},{t:"Advanced notification rules"},{t:"Calendar bidirectional task sync"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
+   hero:[{t:"Everything in Pro, plus:"},{t:"AI weekly summary & anomaly detection"},{t:"Slack + Jira / Linear integrations"},{t:"Behavioral analytics"},{t:"Time Off Management",n:"PTO, sick leave, approvals"},{t:"Custom productivity categories"}],
+   rest:[{t:"Delay report per user & team"},{t:"Advanced screenshots",n:"1 min, random, auto-delete"},{t:"Advanced notification rules"},{t:"Calendar bidirectional task sync"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
    specs:[{v:"∞",l:"Users"},{v:"24 mo",l:"Retention"},{v:"3",l:"Workspaces"}],
-   short:[{t:"AI weekly summary & anomalies"},{t:"Slack + Jira / Linear"},{t:"Behavioral analytics"},{t:"Advanced screenshots"},{t:"Custom productivity categories"},{t:"Priority email support (24h)"}],
-   diff:[{t:"AI weekly summary & anomaly detection"},{t:"Behavioral analytics"},{t:"Custom productivity categories"},{t:"Advanced screenshots"},{t:"Slack + Jira / Linear"},{t:"Calendar bidirectional sync"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
+   short:[{t:"AI weekly summary & anomalies"},{t:"Slack + Jira / Linear"},{t:"Behavioral analytics"},{t:"Time Off Management"},{t:"Custom productivity categories"},{t:"Priority email support (24h)"}],
+   diff:[{t:"AI weekly summary & anomaly detection"},{t:"Behavioral analytics"},{t:"Custom productivity categories"},{t:"Time Off Management",n:"PTO, sick leave, approvals"},{t:"Advanced screenshots"},{t:"Slack + Jira / Linear"},{t:"Calendar bidirectional sync"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
    diffFrom:"Pro",
-   cols:{left:[{t:"AI summary & anomalies"},{t:"Behavioral analytics"},{t:"Custom prod. categories"},{t:"Advanced screenshots"},{t:"Delay reports"}],right:[{t:"Slack + Jira / Linear"},{t:"Calendar task sync"},{t:"3 workspaces"},{t:"Advanced notif. rules"},{t:"24-mo · Priority support"}]},
-   tabs:{core:[{t:"AI weekly summary"},{t:"Behavioral analytics"},{t:"Custom productivity categories"},{t:"Advanced screenshots"},{t:"Delay report per user & team"}],advanced:[{t:"Slack integration"},{t:"Jira / Linear integration"},{t:"Calendar bidirectional sync"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"}],admin:[{t:"Priority email support (24h)"},{t:"24-month retention"}]},
-   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1 min, random",scrCtrl:"All + auto-delete",appMon:"Behavioral",reports:"All + delay",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"Bidirectional",slack:"✓",ai:"✓",cats:"Custom",notif:"Advanced rules",support:"Priority (24h)",retention:"24 months",ws:"Up to 3",am:"—"},
+   cols:{left:[{t:"AI summary & anomalies"},{t:"Behavioral analytics"},{t:"Custom prod. categories"},{t:"Time Off Management"},{t:"Delay reports"}],right:[{t:"Slack + Jira / Linear"},{t:"Calendar task sync"},{t:"3 workspaces"},{t:"Advanced notif. rules"},{t:"24-mo · Priority support"}]},
+   tabs:{core:[{t:"AI weekly summary"},{t:"Behavioral analytics"},{t:"Custom productivity categories"},{t:"Time Off Management",n:"PTO, sick, vacation"},{t:"Delay report per user & team"}],advanced:[{t:"Advanced screenshots"},{t:"Slack integration"},{t:"Jira / Linear integration"},{t:"Calendar bidirectional sync"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"}],admin:[{t:"Priority email support (24h)"},{t:"24-month retention"}]},
+   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1 min, random",scrCtrl:"All + auto-delete",appMon:"Behavioral",reports:"All + delay",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"Bidirectional",slack:"✓",ai:"✓",cats:"Custom",notif:"Advanced rules",support:"Priority (24h)",retention:"24 months",ws:"Up to 3",am:"—",timeOff:"✓"},
   },
   {id:"enterprise",l:"Enterprise",pr:null,cl:"tier-e",ic:"🟣",
    tl:"200+ person companies, global teams & regulated industries",cta:"Contact Sales",
@@ -367,7 +367,7 @@ const P=[
    diffFrom:"Premium",
    cols:{left:[{t:"Dedicated account manager"},{t:"Volume discounts"},{t:"Priority onboarding"},{t:"Custom training"}],right:[{t:"Unlimited workspaces"},{t:"Custom retention"},{t:"Quarterly reviews"},{t:"24/7 priority support"}]},
    tabs:{core:[{t:"Dedicated account manager"},{t:"Volume discounts (50+ seats)"},{t:"Unlimited workspaces"},{t:"Custom data retention"},{t:"Priority 24/7 support"}],advanced:[{t:"Priority onboarding & setup"},{t:"Custom training sessions"},{t:"Quarterly account reviews"},{t:"Early access to features"}],admin:[{t:"Custom retention policies"},{t:"Dedicated Slack/email channel"}]},
-   cmp:{users:"∞ + volume",projects:"+ clients",tracking:"✓",screenshots:"Custom",scrCtrl:"Custom",appMon:"Custom",reports:"All + custom",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"Bidirectional",slack:"✓",ai:"✓",cats:"Custom",notif:"Custom",support:"24/7 dedicated",retention:"Custom",ws:"Unlimited",am:"✓"},
+   cmp:{users:"∞ + volume",projects:"+ clients",tracking:"✓",screenshots:"Custom",scrCtrl:"Custom",appMon:"Custom",reports:"All + custom",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"Bidirectional",slack:"✓",ai:"✓",cats:"Custom",notif:"Custom",support:"24/7 dedicated",retention:"Custom",ws:"Unlimited",am:"✓",timeOff:"✓"},
   }
 ];
 
@@ -380,7 +380,7 @@ const A=[
   {ic:"🌐",nm:"Multi-Language",tg:[],pr:{basic:1,pro:1,premium:1,enterprise:0},fl:"15+ languages with RTL.",ft:["15+ languages","Localized UI","Auto-detect","Custom translations","RTL","Multi-lang PDF"],uc:"Global teams.",tp:{basic:"$1/u",pro:"$1/u",premium:"$1/u",enterprise:"Included"}},
   {ic:"📅",nm:"Shift Scheduling",tg:["new"],pr:{basic:null,pro:4,premium:0,enterprise:0},fl:"Shift templates, overtime, attendance.",ft:["Shift templates","Overtime approval","Attendance reports","Shift swap","Late alerts","Coverage calendar"],uc:"Hourly operations teams.",tp:{basic:"N/A",pro:"$4/u",premium:"Included",enterprise:"Included"}},
   {ic:"💰",nm:"Payroll",tg:["new"],pr:{basic:null,pro:null,premium:3,enterprise:0},fl:"Contractor classification, hourly rates, payroll history.",ft:["Contractor toggle","Auto pay calc","Payroll history","CSV/PDF","Web3 wallet (Ent.)","Multi-currency"],uc:"Mixed contractor teams.",tp:{basic:"N/A",pro:"N/A",premium:"$3/u",enterprise:"Included"}},
-  {ic:"🏖️",nm:"Time Off",tg:["new"],pr:{basic:null,pro:3,premium:0,enterprise:0},fl:"PTO, sick leave, vacation with approvals.",ft:["PTO, sick, vacation","Manager approvals","Coverage calendar","Accrual policies","Balance tracking","Holiday calendar"],uc:"Leave balance tracking.",tp:{basic:"N/A",pro:"$3/u",premium:"Included",enterprise:"Included"}}
+  {ic:"🏖️",nm:"Time Off",tg:["new"],pr:{basic:null,pro:null,premium:3,enterprise:0},fl:"PTO, sick leave, vacation with approvals.",ft:["PTO, sick, vacation","Manager approvals","Coverage calendar","Accrual policies","Balance tracking","Holiday calendar"],uc:"Leave balance tracking.",tp:{basic:"N/A",pro:"N/A",premium:"$3/u",enterprise:"Included"}}
 ];
 
 /* ═══ STATE ═══ */
@@ -441,7 +441,7 @@ function rC2(){let h=chH(1)+biH()+'<div class="c-inner"><div class="tg">';P.forE
    C3: COMPARISON TABLE
    ══════════════════════════════════════════════════════════════ */
 function rC3(){
-  const rows=[{s:"Capacity"},{l:"Users",k:"users"},{l:"Projects",k:"projects"},{s:"Time Tracking"},{l:"Tracking",k:"tracking"},{l:"Screenshots",k:"screenshots"},{l:"Screenshot controls",k:"scrCtrl"},{l:"App monitoring",k:"appMon"},{s:"Reporting"},{l:"Reports",k:"reports"},{l:"CSV export",k:"csv"},{l:"AI summary",k:"ai"},{l:"Prod. categories",k:"cats"},{s:"Team"},{l:"Approval",k:"approval"},{l:"Teams",k:"teams"},{l:"Tags",k:"tags"},{l:"Org chart",k:"orgChart"},{l:"Workspaces",k:"ws"},{s:"Integrations"},{l:"Calendar",k:"cal"},{l:"Slack / Jira",k:"slack"},{s:"Admin"},{l:"Notifications",k:"notif"},{l:"Support",k:"support"},{l:"Retention",k:"retention"},{l:"Account manager",k:"am"}];
+  const rows=[{s:"Capacity"},{l:"Users",k:"users"},{l:"Projects",k:"projects"},{s:"Time Tracking"},{l:"Tracking",k:"tracking"},{l:"Screenshots",k:"screenshots"},{l:"Screenshot controls",k:"scrCtrl"},{l:"App monitoring",k:"appMon"},{s:"Reporting"},{l:"Reports",k:"reports"},{l:"CSV export",k:"csv"},{l:"AI summary",k:"ai"},{l:"Prod. categories",k:"cats"},{s:"Team"},{l:"Approval",k:"approval"},{l:"Teams",k:"teams"},{l:"Tags",k:"tags"},{l:"Org chart",k:"orgChart"},{l:"Workspaces",k:"ws"},{l:"Time Off Management",k:"timeOff"},{s:"Integrations"},{l:"Calendar",k:"cal"},{l:"Slack / Jira",k:"slack"},{s:"Admin"},{l:"Notifications",k:"notif"},{l:"Support",k:"support"},{l:"Retention",k:"retention"},{l:"Account manager",k:"am"}];
   function cell(v){if(v==="✓")return`<td><span class="cy">✓</span></td>`;if(v==="—")return`<td><span class="cn">—</span></td>`;return`<td><span class="cv">${e(v)}</span></td>`}
   let h=chH(2)+biH()+'<div class="c-inner"><div class="cw"><table class="ct"><thead><tr><th>Feature</th>';
   P.forEach(p=>h+=`<th class="thp"><div class="tpn ${p.cl}">${p.ic} ${p.l}${p.pop?' <span class="tag tag-pop">POP</span>':''}</div><div class="tpp">${prH(p)}</div></th>`);
