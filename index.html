@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StaffCo — Pricing Concepts (7 Variants)</title>
+<title>talyvn — Pricing</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
@@ -218,6 +218,19 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0}
 .tbv{font-size:13px;font-weight:700;color:var(--blue)}
 .tbv .dm{font-size:9px;color:var(--text-muted);font-weight:400}
 
+
+/* ═══ FOUNDING MEMBER BANNER ═══ */
+.fm-banner{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(59,130,246,.08));border:1px solid rgba(16,185,129,.2);border-radius:var(--r);padding:18px 22px;margin:0 auto 24px;max-width:720px;text-align:center;animation:fadeIn .4s ease}
+.fm-badge{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:8px}
+.fm-badge::before{content:'⭐'}
+.fm-title{font-size:16px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.fm-desc{font-size:11.5px;color:var(--text-dim);line-height:1.6;margin-bottom:10px}
+.fm-perks{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin-bottom:10px}
+.fm-perk{font-size:10px;color:var(--text-dim);display:flex;align-items:center;gap:4px}
+.fm-perk .ck{color:var(--green);font-size:9px;font-weight:700}
+.fm-spots{font-size:10px;color:var(--orange);font-weight:600}
+.fm-orig{text-decoration:line-through;color:var(--text-muted);font-size:14px;margin-right:6px;font-weight:400}
+
 /* ═══ SIDE PANEL ═══ */
 .ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:998;opacity:0;visibility:hidden;transition:all .3s;backdrop-filter:blur(6px)}
 .ov.open{opacity:1;visibility:visible}
@@ -253,20 +266,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0}
 </head>
 <body>
 <nav class="nav"><div class="nav-inner">
-  <div class="logo">Staff<em>Co</em> <span>v4</span></div>
-  <div class="tabs" id="tabs-c"></div>
+  <div class="logo">taly<em>vn</em></div>
+  
   <div class="nav-actions">
     <button class="theme-toggle" onclick="tgTheme()"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.5 4.5l1.4 1.4M14.1 14.1l1.4 1.4M4.5 15.5l1.4-1.4M14.1 5.9l1.4-1.4"/></svg><div class="tt-track"><div class="tt-thumb"></div></div><span id="thl">Dark</span></button>
   </div>
 </div></nav>
 <div class="page">
   <div class="concept active" id="v-1"></div>
-  <div class="concept" id="v-2"></div>
-  <div class="concept" id="v-3"></div>
-  <div class="concept" id="v-4"></div>
-  <div class="concept" id="v-5"></div>
-  <div class="concept" id="v-6"></div>
-  <div class="concept" id="v-7"></div>
 </div>
 <div class="ov" id="ov" onclick="closeP()"></div>
 <div class="pnl" id="pnl">
@@ -290,64 +297,64 @@ const CATS=[
 
 const P=[
   {id:"basic",l:"Basic",pr:7,cl:"tier-s",ic:"🟢",
-   tl:"Solopreneurs & early startups, up to 20 people",cta:"Start Free Trial",
+   tl:"Solopreneurs & early startups",cta:"Start Free Trial",
    cats:{
-     tracking:[{t:"Auto & manual time tracking"},{t:"Edit own time entries",n:"no approval"},{t:"Unlimited projects & tasks",n:"no clients/budgets"}],
-     monitoring:[{t:"Screenshots every 5 min",n:"fixed, no blur/delete"},{t:"App & website monitoring",n:"usage by user only"}],
+     tracking:[{t:"Auto & manual time tracking"},{t:"Unlimited projects & tasks"}],
+     monitoring:[{t:"Screenshots every 5 min",n:"fixed interval"},{t:"App & website monitoring",n:"usage by user only"}],
      reporting:[{t:"Individual dashboard & timeline"},{t:"Daily time report",n:"view only, no export"}],
-     team:[{t:"Up to 20 users"},{t:"1 dept, 3 teams max"},{t:"Up to 5 tags"}],
+     team:[{t:"Unlimited users"},{t:"1 dept, 3 teams max"},{t:"Up to 5 tags"}],
      integrations:[],
      admin:[{t:"Email notifications only"},{t:"2FA & password security"},{t:"Setup wizard"},{t:"3-month data retention"}],
    },
-   hero:[{t:"Up to 20 users"},{t:"Unlimited projects & tasks"},{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard & timeline"}],
-   rest:[{t:"Daily time report",n:"view only"},{t:"Edit own time entries"},{t:"1 dept, 3 teams max"},{t:"Up to 5 tags"},{t:"Email notifications"},{t:"2FA security"},{t:"Setup wizard"},{t:"3-month retention"}],
+   hero:[{t:"Unlimited users"},{t:"Unlimited projects & tasks"},{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard & timeline"}],
+   rest:[{t:"Daily time report",n:"view only"},{t:"1 dept, 3 teams max"},{t:"Up to 5 tags"},{t:"Email notifications"},{t:"2FA security"},{t:"Setup wizard"},{t:"3-month retention"}],
    specs:[{v:"20",l:"Users"},{v:"3 mo",l:"Retention"},{v:"∞",l:"Projects"}],
    short:[{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard & timeline"},{t:"Daily time report"},{t:"2FA & password security"}],
-   diff:[{t:"Up to 20 users"},{t:"Unlimited projects & tasks"},{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard & timeline"},{t:"Daily time report"},{t:"2FA & password security"},{t:"3-month data retention"}],
+   diff:[{t:"Unlimited users"},{t:"Unlimited projects & tasks"},{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard & timeline"},{t:"Daily time report"},{t:"2FA & password security"},{t:"3-month data retention"}],
    diffFrom:null,
-   cols:{left:[{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Dashboard & timeline"},{t:"Daily time report"}],right:[{t:"Up to 20 users"},{t:"1 dept, 3 teams"},{t:"5 tags"},{t:"Email notifications"},{t:"2FA · 3-mo retention"}]},
-   tabs:{core:[{t:"Auto & manual time tracking"},{t:"Unlimited projects & tasks"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard"}],advanced:[{t:"Daily time report",n:"view only"},{t:"Edit own time entries"},{t:"Up to 5 tags"}],admin:[{t:"Email notifications"},{t:"2FA & password security"},{t:"Setup wizard"},{t:"3-month retention"}]},
-   cmp:{users:"Up to 20",projects:"Unlimited",tracking:"✓",screenshots:"5 min fixed",scrCtrl:"—",appMon:"Basic",reports:"Daily (view only)",csv:"—",approval:"—",teams:"3 max",tags:"5",orgChart:"—",cal:"—",slack:"—",ai:"—",cats:"—",notif:"Email only",support:"Email",retention:"3 months",ws:"1",am:"—",timeOff:"—"},
+   cols:{left:[{t:"Auto & manual time tracking"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Dashboard & timeline"},{t:"Daily time report"}],right:[{t:"Unlimited users"},{t:"1 dept, 3 teams"},{t:"5 tags"},{t:"Email notifications"},{t:"2FA · 3-mo retention"}]},
+   tabs:{core:[{t:"Auto & manual time tracking"},{t:"Unlimited projects & tasks"},{t:"Screenshots every 5 min"},{t:"App & website monitoring"},{t:"Individual dashboard"}],advanced:[{t:"Daily time report",n:"view only"},{t:"Up to 5 tags"}],admin:[{t:"Email notifications"},{t:"2FA & password security"},{t:"Setup wizard"},{t:"3-month retention"}]},
+   cmp:{users:"Unlimited",projects:"Unlimited",tracking:"✓",screenshots:"5 min fixed",scrCtrl:"—",appMon:"Basic",reports:"Daily (view only)",csv:"—",approval:"—",teams:"3 max",tags:"5",orgChart:"—",cal:"—",slack:"—",ai:"—",cats:"—",notif:"Email only",support:"Email",retention:"3 months",ws:"1",am:"—",timeOff:"—"},
   },
   {id:"pro",l:"Pro",pr:14,cl:"tier-p",ic:"🔵",
    tl:"Growing teams of 10–50, agencies & remote-first",cta:"Start Free Trial",
    cats:{
      tracking:[{t:"Everything in Basic"},{t:"Time approval workflow",n:"pending → approved → rejected"},{t:"Full adjustment history"},{t:"Unlimited projects & client management"}],
-     monitoring:[{t:"Screenshot controls per user",n:"blur, 1/3/5/10 min, delete"},{t:"Productivity rating",n:"productive / neutral / unproductive"}],
-     reporting:[{t:"All reporting modules",n:"time, screenshot, app usage"},{t:"CSV export on all reports"},{t:"Weekly summary emails"}],
-     team:[{t:"Unlimited users (by seat)"},{t:"Unlimited teams & managers"},{t:"Unlimited tags"},{t:"Org chart visibility"}],
-     integrations:[{t:"Google Calendar sync (2-way)"}],
+     monitoring:[{t:"Screenshot controls per user",n:"blur, 1/3/5/10 min"},{t:"Productivity rating",n:"productive / neutral / unproductive"}],
+     reporting:[{t:"Time, screenshot & app usage reports"},{t:"CSV export on all reports"},{t:"Weekly summary emails"}],
+     team:[{t:"Unlimited users (by seat)"},{t:"Unlimited teams & managers"},{t:"Unlimited tags"}],
+     integrations:[{t:"Google Calendar integration"}],
      admin:[{t:"Company-wide defaults",n:"idle timeout, blur, manual time"},{t:"12-month data retention"}],
    },
-   hero:[{t:"Everything in Basic, plus:"},{t:"Unlimited users & client management"},{t:"Screenshot controls per user"},{t:"All reporting + CSV export"},{t:"Time approval workflow"},{t:"Google Calendar sync (2-way)"}],
-   rest:[{t:"Productivity rating"},{t:"Full adjustment history"},{t:"Unlimited teams & managers"},{t:"Unlimited tags"},{t:"Org chart visibility"},{t:"Weekly summary emails"},{t:"Company-wide defaults"},{t:"12-month retention"}],
+   hero:[{t:"Everything in Basic, plus:"},{t:"Unlimited users & client management"},{t:"Screenshot controls per user"},{t:"All reporting + CSV export"},{t:"Time approval workflow"},{t:"Google Calendar integration"}],
+   rest:[{t:"Productivity rating"},{t:"Full adjustment history"},{t:"Unlimited teams & managers"},{t:"Unlimited tags"},{t:"Weekly summary emails"},{t:"Company-wide defaults"},{t:"12-month retention"}],
    specs:[{v:"∞",l:"Users"},{v:"12 mo",l:"Retention"},{v:"∞",l:"Projects"}],
-   short:[{t:"Unlimited users & client management"},{t:"Screenshot controls per user"},{t:"All reporting + CSV export"},{t:"Time approval workflow"},{t:"Google Calendar sync"},{t:"Org chart visibility"}],
-   diff:[{t:"Time approval workflow"},{t:"Full adjustment history"},{t:"Unlimited users & client management"},{t:"Screenshot controls per user"},{t:"Productivity rating"},{t:"All reports + CSV export"},{t:"Weekly summary emails"},{t:"Unlimited teams, tags, org chart"},{t:"Google Calendar 2-way sync"},{t:"12-month retention"}],
+   short:[{t:"Unlimited users & client management"},{t:"Screenshot controls per user"},{t:"All reporting + CSV export"},{t:"Time approval workflow"},{t:"Google Calendar integration"}],
+   diff:[{t:"Time approval workflow"},{t:"Full adjustment history"},{t:"Unlimited users & client management"},{t:"Screenshot controls per user"},{t:"Productivity rating"},{t:"All reports + CSV export"},{t:"Weekly summary emails"},{t:"Unlimited teams & tags"},{t:"Google Calendar integration"},{t:"12-month retention"}],
    diffFrom:"Basic",
-   cols:{left:[{t:"Time approval workflow"},{t:"Screenshot controls"},{t:"All reports + CSV"},{t:"Productivity rating"},{t:"Calendar sync (2-way)"}],right:[{t:"Unlimited users"},{t:"Unlimited teams"},{t:"Org chart"},{t:"Weekly summaries"},{t:"12-mo retention"}]},
-   tabs:{core:[{t:"Time approval workflow"},{t:"Unlimited projects & clients"},{t:"Screenshot controls per user"},{t:"Productivity rating"},{t:"All reporting + CSV"}],advanced:[{t:"Full adjustment history"},{t:"Unlimited teams & managers"},{t:"Org chart"},{t:"Google Calendar sync"},{t:"Weekly summary emails"}],admin:[{t:"Company-wide defaults"},{t:"12-month retention"}]},
-   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1/3/5/10 min",scrCtrl:"Blur, delete",appMon:"Productivity",reports:"All modules",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"2-way",slack:"—",ai:"—",cats:"—",notif:"Email + digest",support:"Email",retention:"12 months",ws:"1",am:"—",timeOff:"—"},
+   cols:{left:[{t:"Time approval workflow"},{t:"Screenshot controls"},{t:"All reports + CSV"},{t:"Productivity rating"},{t:"Google Calendar integration"}],right:[{t:"Unlimited users"},{t:"Unlimited teams"},{t:"Weekly summaries"},{t:"12-mo retention"}]},
+   tabs:{core:[{t:"Time approval workflow"},{t:"Unlimited projects & clients"},{t:"Screenshot controls per user"},{t:"Productivity rating"},{t:"All reporting + CSV"}],advanced:[{t:"Full adjustment history"},{t:"Unlimited teams & managers"},{t:"Google Calendar integration"},{t:"Weekly summary emails"}],admin:[{t:"Company-wide defaults"},{t:"12-month retention"}]},
+   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1/3/5/10 min",scrCtrl:"Blur",appMon:"Productivity",reports:"All modules",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"—",cal:"Google Calendar",slack:"—",ai:"—",cats:"—",notif:"Email + digest",support:"Email",retention:"12 months",ws:"1",am:"—",timeOff:"—"},
   },
   {id:"premium",l:"Premium",pr:22,cl:"tier-b",ic:"🟠",pop:true,
    tl:"Mid-size companies (50–200), HR & compliance teams",cta:"Start Free Trial",
    cats:{
      tracking:[{t:"Everything in Pro"}],
-     monitoring:[{t:"Advanced screenshots",n:"1 min, random, auto-delete"},{t:"Behavioral analytics & activity overview"}],
-     reporting:[{t:"Delay report per user & team"},{t:"AI weekly summary",n:"anomaly detection, workload tips"},{t:"Custom productivity categories"}],
+     monitoring:[{t:"Time-based screenshots",n:"1/3/5/10 min"},{t:"Behavioral analytics & activity overview"}],
+     reporting:[{t:"Delay report per user & team"},{t:"AI weekly summary",n:"anomaly detection, workload tips"}],
      team:[{t:"Multiple workspaces (up to 3)"},{t:"Time Off Management",n:"PTO, sick leave, vacation, approvals"}],
-     integrations:[{t:"Slack integration",n:"summaries, idle bot"},{t:"Jira / Linear integration",n:"task import, time sync"},{t:"Calendar bidirectional task sync"}],
+     integrations:[{t:"Slack integration",n:"summaries, idle bot"},{t:"Jira / Linear integration",n:"task import, time sync"},{t:"Google Calendar integration"}],
      admin:[{t:"Advanced notification rules",n:"idle alerts, digests, thresholds"},{t:"Priority email support (24h)"},{t:"24-month data retention"}],
    },
-   hero:[{t:"Everything in Pro, plus:"},{t:"AI weekly summary & anomaly detection"},{t:"Slack + Jira / Linear integrations"},{t:"Behavioral analytics"},{t:"Time Off Management",n:"PTO, sick leave, approvals"},{t:"Custom productivity categories"}],
-   rest:[{t:"Delay report per user & team"},{t:"Advanced screenshots",n:"1 min, random, auto-delete"},{t:"Advanced notification rules"},{t:"Calendar bidirectional task sync"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
+   hero:[{t:"Everything in Pro, plus:"},{t:"AI weekly summary & anomaly detection"},{t:"Slack + Jira / Linear integrations"},{t:"Behavioral analytics"},{t:"Time Off Management",n:"PTO, sick leave, approvals"}],
+   rest:[{t:"Delay report per user & team"},{t:"Time-based screenshots",n:"1/3/5/10 min"},{t:"Advanced notification rules"},{t:"Google Calendar integration"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
    specs:[{v:"∞",l:"Users"},{v:"24 mo",l:"Retention"},{v:"3",l:"Workspaces"}],
-   short:[{t:"AI weekly summary & anomalies"},{t:"Slack + Jira / Linear"},{t:"Behavioral analytics"},{t:"Time Off Management"},{t:"Custom productivity categories"},{t:"Priority email support (24h)"}],
-   diff:[{t:"AI weekly summary & anomaly detection"},{t:"Behavioral analytics"},{t:"Custom productivity categories"},{t:"Time Off Management",n:"PTO, sick leave, approvals"},{t:"Advanced screenshots"},{t:"Slack + Jira / Linear"},{t:"Calendar bidirectional sync"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
+   short:[{t:"AI weekly summary & anomalies"},{t:"Slack + Jira / Linear"},{t:"Behavioral analytics"},{t:"Time Off Management"},{t:"Priority email support (24h)"}],
+   diff:[{t:"AI weekly summary & anomaly detection"},{t:"Behavioral analytics"},{t:"Time Off Management",n:"PTO, sick leave, approvals"},{t:"Time-based screenshots"},{t:"Slack + Jira / Linear"},{t:"Google Calendar integration"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"},{t:"Priority email support (24h)"},{t:"24-month retention"}],
    diffFrom:"Pro",
-   cols:{left:[{t:"AI summary & anomalies"},{t:"Behavioral analytics"},{t:"Custom prod. categories"},{t:"Time Off Management"},{t:"Delay reports"}],right:[{t:"Slack + Jira / Linear"},{t:"Calendar task sync"},{t:"3 workspaces"},{t:"Advanced notif. rules"},{t:"24-mo · Priority support"}]},
-   tabs:{core:[{t:"AI weekly summary"},{t:"Behavioral analytics"},{t:"Custom productivity categories"},{t:"Time Off Management",n:"PTO, sick, vacation"},{t:"Delay report per user & team"}],advanced:[{t:"Advanced screenshots"},{t:"Slack integration"},{t:"Jira / Linear integration"},{t:"Calendar bidirectional sync"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"}],admin:[{t:"Priority email support (24h)"},{t:"24-month retention"}]},
-   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1 min, random",scrCtrl:"All + auto-delete",appMon:"Behavioral",reports:"All + delay",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"Bidirectional",slack:"✓",ai:"✓",cats:"Custom",notif:"Advanced rules",support:"Priority (24h)",retention:"24 months",ws:"Up to 3",am:"—",timeOff:"✓"},
+   cols:{left:[{t:"AI summary & anomalies"},{t:"Behavioral analytics"},{t:"Time Off Management"},{t:"Delay reports"}],right:[{t:"Slack + Jira / Linear"},{t:"Google Calendar integration"},{t:"3 workspaces"},{t:"Advanced notif. rules"},{t:"24-mo · Priority support"}]},
+   tabs:{core:[{t:"AI weekly summary"},{t:"Behavioral analytics"},{t:"Time Off Management",n:"PTO, sick, vacation"},{t:"Delay report per user & team"}],advanced:[{t:"Time-based screenshots"},{t:"Slack integration"},{t:"Jira / Linear integration"},{t:"Google Calendar integration"},{t:"Advanced notification rules"},{t:"Multiple workspaces (up to 3)"}],admin:[{t:"Priority email support (24h)"},{t:"24-month retention"}]},
+   cmp:{users:"Unlimited",projects:"+ clients",tracking:"✓",screenshots:"1/3/5/10 min",scrCtrl:"All controls",appMon:"Behavioral",reports:"All + delay",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"—",cal:"Google Calendar",slack:"✓",ai:"✓",cats:"—",notif:"Advanced rules",support:"Priority (24h)",retention:"24 months",ws:"Up to 3",am:"—",timeOff:"✓"},
   },
   {id:"enterprise",l:"Enterprise",pr:null,cl:"tier-e",ic:"🟣",
    tl:"200+ person companies, global teams & regulated industries",cta:"Contact Sales",
@@ -367,18 +374,15 @@ const P=[
    diffFrom:"Premium",
    cols:{left:[{t:"Dedicated account manager"},{t:"Volume discounts"},{t:"Priority onboarding"},{t:"Custom training"}],right:[{t:"Unlimited workspaces"},{t:"Custom retention"},{t:"Quarterly reviews"},{t:"24/7 priority support"}]},
    tabs:{core:[{t:"Dedicated account manager"},{t:"Volume discounts (50+ seats)"},{t:"Unlimited workspaces"},{t:"Custom data retention"},{t:"Priority 24/7 support"}],advanced:[{t:"Priority onboarding & setup"},{t:"Custom training sessions"},{t:"Quarterly account reviews"},{t:"Early access to features"}],admin:[{t:"Custom retention policies"},{t:"Dedicated Slack/email channel"}]},
-   cmp:{users:"∞ + volume",projects:"+ clients",tracking:"✓",screenshots:"Custom",scrCtrl:"Custom",appMon:"Custom",reports:"All + custom",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"✓",cal:"Bidirectional",slack:"✓",ai:"✓",cats:"Custom",notif:"Custom",support:"24/7 dedicated",retention:"Custom",ws:"Unlimited",am:"✓",timeOff:"✓"},
+   cmp:{users:"∞ + volume",projects:"+ clients",tracking:"✓",screenshots:"Custom",scrCtrl:"Custom",appMon:"Custom",reports:"All + custom",csv:"✓",approval:"✓",teams:"Unlimited",tags:"Unlimited",orgChart:"—",cal:"Google Calendar",slack:"✓",ai:"✓",cats:"—",notif:"Custom",support:"24/7 dedicated",retention:"Custom",ws:"Unlimited",am:"✓",timeOff:"✓"},
   }
 ];
 
 const A=[
   {ic:"🧠",nm:"AI Insights",tg:["ai"],pr:{basic:null,pro:3,premium:0,enterprise:0},fl:"AI work pattern analysis, burnout detection, coaching.",ft:["AI weekly summaries","Burnout scoring","Anomaly detection","Coaching recommendations","Focus tracking","Team benchmarks"],uc:"Team leads managing 10+ remote.",tp:{basic:"N/A",pro:"$3/u",premium:"Included",enterprise:"Included"}},
   {ic:"🔗",nm:"Adv. Integrations",tg:["new"],pr:{basic:null,pro:3,premium:0,enterprise:0},fl:"50+ connectors — Slack, Jira, GitHub, Discord, etc.",ft:["Jira, Asana, Trello, Monday","Slack & Discord bot","Zapier & Make","Custom webhooks","Bi-directional sync","MS Teams"],uc:"Multi-tool teams.",tp:{basic:"N/A",pro:"$3/u",premium:"Included",enterprise:"Included"}},
-  {ic:"📊",nm:"Custom Categories",tg:[],pr:{basic:null,pro:2,premium:0,enterprise:0},fl:"Custom productivity categories beyond defaults.",ft:["Unlimited categories","Per-team rules","Category reports","Bulk assign","Import/export","Reclassification"],uc:"Specialized workflows.",tp:{basic:"N/A",pro:"$2/u",premium:"Included",enterprise:"Included"}},
   {ic:"🗄️",nm:"Extended History",tg:[],pr:{basic:1,pro:1,premium:1,enterprise:0},fl:"36-month retention for compliance.",ft:["36-month retention","Compliance exports","YoY trends","Encrypted backups","Granular deletion","Audit trail"],uc:"Regulated industries.",tp:{basic:"$1/u",pro:"$1/u",premium:"$1/u",enterprise:"Included"}},
   {ic:"📞",nm:"Phone Support",tg:[],pr:{basic:5,pro:5,premium:0,enterprise:0},fl:"Direct phone line with priority escalation.",ft:["Direct phone Mon–Fri","< 2 min pickup","4h SLA","Account mgr 25+","Check-ins","Beta access"],uc:"Teams without IT.",tp:{basic:"$5/u",pro:"$5/u",premium:"Included",enterprise:"Included"}},
-  {ic:"🌐",nm:"Multi-Language",tg:[],pr:{basic:1,pro:1,premium:1,enterprise:0},fl:"15+ languages with RTL.",ft:["15+ languages","Localized UI","Auto-detect","Custom translations","RTL","Multi-lang PDF"],uc:"Global teams.",tp:{basic:"$1/u",pro:"$1/u",premium:"$1/u",enterprise:"Included"}},
-  {ic:"📅",nm:"Shift Scheduling",tg:["new"],pr:{basic:null,pro:4,premium:0,enterprise:0},fl:"Shift templates, overtime, attendance.",ft:["Shift templates","Overtime approval","Attendance reports","Shift swap","Late alerts","Coverage calendar"],uc:"Hourly operations teams.",tp:{basic:"N/A",pro:"$4/u",premium:"Included",enterprise:"Included"}},
   {ic:"💰",nm:"Payroll",tg:["new"],pr:{basic:null,pro:null,premium:3,enterprise:0},fl:"Contractor classification, hourly rates, payroll history.",ft:["Contractor toggle","Auto pay calc","Payroll history","CSV/PDF","Web3 wallet (Ent.)","Multi-currency"],uc:"Mixed contractor teams.",tp:{basic:"N/A",pro:"N/A",premium:"$3/u",enterprise:"Included"}},
   {ic:"🏖️",nm:"Time Off",tg:["new"],pr:{basic:null,pro:null,premium:3,enterprise:0},fl:"PTO, sick leave, vacation with approvals.",ft:["PTO, sick, vacation","Manager approvals","Coverage calendar","Accrual policies","Balance tracking","Holiday calendar"],uc:"Leave balance tracking.",tp:{basic:"N/A",pro:"N/A",premium:"$3/u",enterprise:"Included"}}
 ];
@@ -387,28 +391,22 @@ const A=[
 let aTab=0,bAnn=false;
 const aS={};[1,2,3,4,5,6,7].forEach(n=>{aS[n]={};P.forEach(p=>aS[n][p.id]={})});
 const catSt={};P.forEach(p=>{catSt[p.id]={};let f=true;CATS.forEach(c=>{const ft=p.cats[c.id];if(ft&&ft.length&&f){catSt[p.id][c.id]=true;f=false}else catSt[p.id][c.id]=false})});
-const innerTabSt={};P.forEach(p=>innerTabSt[p.id]="core");
+
 
 const CON=[
-  {id:"v-1",l:"① Categorized",co:"var(--orange)",cd:"var(--orange-dim)",cb:"rgba(245,158,11,.25)",tt:'Categorized <em>Features</em>',su:"Collapsible category groups — scan by topic, open what matters."},
-  {id:"v-2",l:"② Hero + Expand",co:"var(--cyan)",cd:"var(--cyan-dim)",cb:"rgba(6,182,212,.25)",tt:'Hero <em>Features</em>',su:"Top 5-6 features upfront, full list behind \"+N more\" expander."},
-  {id:"v-3",l:"③ Comparison Table",co:"var(--green)",cd:"var(--green-dim)",cb:"rgba(16,185,129,.25)",tt:'Feature <em>Comparison</em>',su:"Horizontal matrix — scan across tiers with checkmarks and values."},
-  {id:"v-4",l:"④ Specs Bar",co:"var(--purple)",cd:"var(--purple-dim)",cb:"rgba(139,92,246,.25)",tt:'Specs Bar + <em>Short List</em>',su:"Limits in a compact bar, then just 5-6 clean features below."},
-  {id:"v-5",l:"⑤ Differentiators",co:"var(--red)",cd:"var(--red-dim)",cb:"rgba(239,68,68,.25)",tt:'Only What\'s <em>New</em>',su:"Each tier shows only what it adds over the previous. No repeated features."},
-  {id:"v-6",l:"⑥ Two-Column",co:"var(--pink)",cd:"var(--pink-dim)",cb:"rgba(236,72,153,.25)",tt:'Two-Column <em>Split</em>',su:"Features split: left = capabilities, right = limits & admin. Denser, scannable."},
-  {id:"v-7",l:"⑦ Inner Tabs",co:"var(--blue)",cd:"var(--blue-dim)",cb:"rgba(59,130,246,.25)",tt:'Mini Tabs <em>Per Card</em>',su:"Core / Advanced / Admin tabs inside each card — pick what to see."},
+  {id:"v-1",l:"Categorized",co:"var(--orange)",cd:"var(--orange-dim)",cb:"rgba(245,158,11,.25)",tt:'Choose Your <em>Plan</em>',su:"Pick the plan that fits your team. All plans include a 14-day free trial."},
 ];
 
 /* ═══ HELPERS ═══ */
 function e(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-function gP(b){return bAnn?Math.round(b*.83):b}
+const fmAnn={7:50,14:100,22:158};const fmMo={7:Math.ceil(50/12),14:Math.ceil(100/12),22:Math.ceil(158/12)};function gP(b){return bAnn?b:b}
 function tgTheme(){const d=document.documentElement.getAttribute("data-theme")==="dark";document.documentElement.setAttribute("data-theme",d?"light":"dark");document.getElementById("thl").textContent=d?"Light":"Dark"}
 function tgBill(){bAnn=!bAnn;renderAll()}
 function colOf(id){return{basic:"var(--green)",pro:"var(--blue)",premium:"var(--orange)",enterprise:"var(--purple)"}[id]||"var(--blue)"}
 function chv(c){return`<svg class="${c}" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6l4 4 4-4"/></svg>`}
 function chH(i){const c=CON[i];return`<div class="ch"><div class="ch-badge" style="color:${c.co};background:${c.cd};border:1px solid ${c.cb}">${c.l}</div><h2>${c.tt}</h2><p>${c.su}</p></div>`}
-function biH(){return`<div class="billing-toggle"><span class="billing-opt ${!bAnn?"active":""}" onclick="tgBill()">Monthly</span><div class="billing-track ${bAnn?"annual":""}" onclick="tgBill()"><div class="billing-track-thumb"></div></div><span class="billing-opt ${bAnn?"active":""}" onclick="tgBill()">Annual</span>${bAnn?'<span class="billing-save">Save ~17%</span>':""}</div>`}
-function prH(p){if(!p.pr)return'<span style="font-size:18px">Custom</span>';return`$${gP(p.pr)}<span class="dm"> /user/mo</span>`}
+function biH(){let h=`<div class="billing-toggle"><span class="billing-opt ${!bAnn?"active":""}" onclick="tgBill()">Monthly</span><div class="billing-track ${bAnn?"annual":""}" onclick="tgBill()"><div class="billing-track-thumb"></div></div><span class="billing-opt ${bAnn?"active":""}" onclick="tgBill()">Annual</span>${bAnn?'<span class="billing-save">Save 40%</span>':""}</div>`;if(bAnn)h+=`<div class="fm-banner"><div class="fm-badge">Founding Member Access</div><div class="fm-title">Lock in 40% off for 2 years</div><div class="fm-desc">Annual prepayment only. Price locked for 24 months — even after public launch pricing goes up.</div><div class="fm-perks"><span class="fm-perk"><span class="ck">✓</span>All future features included</span><span class="fm-perk"><span class="ck">✓</span>2-year price lock</span><span class="fm-perk"><span class="ck">✓</span>Min. 20 users</span><span class="fm-perk"><span class="ck">✓</span>Pro & Premium plans</span></div><div class="fm-spots">Only 20 spots available · Closes September 1, 2026</div></div>`;return h}
+function prH(p){if(!p.pr)return'<span style="font-size:18px">Custom</span>';if(bAnn){const fm=fmMo[p.pr]||Math.ceil((p.pr*12*.6)/12);return`<span class="fm-orig">$${p.pr}</span>$${fm}<span class="dm"> /user/mo</span>`}return`$${p.pr}<span class="dm"> /user/mo</span>`}
 function cTop(p,i){return`<div class="card ${p.pop?'popular':''}" style="animation-delay:${i*.06}s">${p.pop?'<div class="pop-strip"></div>':''}<div class="tn ${p.cl}">${p.ic} ${e(p.l)}${p.pop?' <span class="tag tag-pop">POPULAR</span>':''}</div><div class="tp">${prH(p)}</div><div class="tl">${e(p.tl)}</div><button class="tc">${p.cta}</button><div class="td"></div>`}
 function fHTML(f,ck){return`<li><span class="ck" style="color:${ck}">✓</span><span>${e(f.t)}${f.n?`<span class="note"> — ${e(f.n)}</span>`:''}</span></li>`}
 
@@ -418,9 +416,9 @@ function aoH(p,sk){
   A.forEach((a,i)=>{const pr=a.pr[p.id];if(pr===null)return;const inc=pr===0,on=st[i]||false;const tg=a.tg.map(t=>`<span class="tsm t${t[0]}-sm">${t.toUpperCase()}</span>`).join('');
   r+=`<div class="ar"><span class="ai">${a.ic}</span><span class="an">${a.nm} ${tg}</span><span class="ap ${inc?'inc':'paid'}">${inc?'✓ Incl.':'$'+pr+'/u'}</span><button class="ib" onclick="openP(${i})">ⓘ</button>${!inc?`<label class="tgl"><input type="checkbox" ${on?'checked':''} onchange="aS[${sk}]['${p.id}'][${i}]=this.checked;uTot(${sk},'${p.id}')"><span class="sl"></span></label>`:''}</div>`});
   const base=p.pr?gP(p.pr):0;let add=0;Object.entries(st).forEach(([i,on])=>{if(on){const x=A[i].pr[p.id];if(x&&x>0)add+=x}});
-  return`<div class="as"><button class="at" id="ab${sk}-${p.id}" onclick="tgA(${sk},'${p.id}')"><span class="plus">+</span>Add-ons</button><div class="ad" id="ad${sk}-${p.id}">${r}<div class="tb" id="tb${sk}-${p.id}"><span class="tbl">Per user total</span><span class="tbv">${p.pr?'$'+(base+add):'Custom'}<span class="dm">/mo</span></span></div></div></div>`}
+  const unit='/mo';const dispBase=bAnn&&p.pr?(fmMo[p.pr]||Math.ceil((p.pr*12*.6)/12)):base;return`<div class="as"><button class="at" id="ab${sk}-${p.id}" onclick="tgA(${sk},'${p.id}')"><span class="plus">+</span>Add-ons</button><div class="ad" id="ad${sk}-${p.id}">${r}<div class="tb" id="tb${sk}-${p.id}"><span class="tbl">Per user total</span><span class="tbv">${p.pr?'$'+(dispBase+add):'Custom'}<span class="dm">${unit}</span></span></div></div></div>`}
 function tgA(sk,pid){const b=document.getElementById('ab'+sk+'-'+pid),d=document.getElementById('ad'+sk+'-'+pid);const o=d.classList.contains('open');b.classList.toggle('open',!o);d.classList.toggle('open',!o)}
-function uTot(sk,pid){const p=P.find(x=>x.id===pid);const st=aS[sk][pid];const base=p.pr?gP(p.pr):0;let add=0;Object.entries(st).forEach(([i,on])=>{if(on){const x=A[i].pr[pid];if(x&&x>0)add+=x}});const el=document.getElementById('tb'+sk+'-'+pid);if(el)el.innerHTML=`<span class="tbl">Per user total</span><span class="tbv">${p.pr?'$'+(base+add):'Custom'}<span class="dm">/mo</span></span>`}
+function uTot(sk,pid){const p=P.find(x=>x.id===pid);const st=aS[sk][pid];const base=p.pr?gP(p.pr):0;let add=0;Object.entries(st).forEach(([i,on])=>{if(on){const x=A[i].pr[pid];if(x&&x>0)add+=x}});const unit='/mo';const dispBase=bAnn&&p.pr?(fmMo[p.pr]||Math.ceil((p.pr*12*.6)/12)):base;const el=document.getElementById('tb'+sk+'-'+pid);if(el)el.innerHTML=`<span class="tbl">Per user total</span><span class="tbv">${p.pr?'$'+(dispBase+add):'Custom'}<span class="dm">${unit}</span></span>`}
 function openP(i){const a=A[i];document.getElementById("pnl-bd").innerHTML=`<div class="pnl-ico">${a.ic}</div><div class="pnl-nm">${a.nm}</div><div class="pnl-pr">${gPP(a)} <span class="dm">/user/mo</span></div><p class="pnl-ds">${a.fl}</p><div class="pnl-sc">Pricing by tier</div><div class="pnl-ts">${P.map(p=>{const pr=a.tp[p.id];const cl=pr==="Included"?"var(--green)":pr==="N/A"?"var(--text-muted)":"var(--blue)";return`<div class="pnl-ti"><div class="pnl-tin ${p.cl}">${p.l}</div><div class="pnl-tip" style="color:${cl}">${pr}</div></div>`}).join('')}</div><div class="pnl-sc">What's included</div><ul class="pnl-fl">${a.ft.map(f=>`<li><span class="ck">✓</span>${f}</li>`).join('')}</ul><div class="pnl-uc"><div class="pnl-ucl">💡 Best for</div><div class="pnl-uct">${a.uc}</div></div>`;document.getElementById("pnl").classList.add("open");document.getElementById("ov").classList.add("open")}
 function closeP(){document.getElementById("pnl").classList.remove("open");document.getElementById("ov").classList.remove("open")}
 function gPP(a){for(const t of["pro","premium","basic"])if(a.pr[t]!==null&&a.pr[t]>0)return"$"+a.pr[t];return"Varies"}
@@ -431,50 +429,10 @@ function gPP(a){for(const t of["pro","premium","basic"])if(a.pr[t]!==null&&a.pr[
 function tgCat(pid,cid){catSt[pid][cid]=!catSt[pid][cid];const h=document.querySelector(`[data-ch="${pid}-${cid}"]`),b=document.querySelector(`[data-cb="${pid}-${cid}"]`);if(h&&b){h.classList.toggle("open",catSt[pid][cid]);b.classList.toggle("open",catSt[pid][cid])}}
 function rC1(){let h=chH(0)+biH()+'<div class="c-inner"><div class="tg">';P.forEach((p,i)=>{h+=cTop(p,i);const ck=colOf(p.id);CATS.forEach(c=>{const ft=p.cats[c.id];if(!ft||!ft.length)return;const op=catSt[p.id][c.id];h+=`<div class="cg"><div class="cgh ${op?'open':''}" data-ch="${p.id}-${c.id}" onclick="tgCat('${p.id}','${c.id}')"><span class="cgi">${c.i}</span><span class="cgl">${c.l}</span><span class="cgc">${ft.length}</span>${chv('cgv')}</div><div class="cgb ${op?'open':''}" data-cb="${p.id}-${c.id}"><ul class="fl cgf">${ft.map(f=>fHTML(f,ck)).join('')}</ul></div></div>`});h+=aoH(p,1)+'</div>'});h+='</div></div>';document.getElementById("v-1").innerHTML=h}
 
-/* ══════════════════════════════════════════════════════════════
-   C2: HERO + EXPAND
-   ══════════════════════════════════════════════════════════════ */
-function tgExp(pid){const b=document.getElementById('xb-'+pid),w=document.getElementById('rw-'+pid);const o=w.classList.contains('open');b.classList.toggle('open',!o);w.classList.toggle('open',!o);b.querySelector('.xl').textContent=o?`+${P.find(p=>p.id===pid).rest.length} more`:'Show less'}
-function rC2(){let h=chH(1)+biH()+'<div class="c-inner"><div class="tg">';P.forEach((p,i)=>{const ck=colOf(p.id);h+=cTop(p,i)+`<ul class="fl">${p.hero.map(f=>fHTML(f,ck)).join('')}</ul>`;if(p.rest.length)h+=`<button class="xb" id="xb-${p.id}" onclick="tgExp('${p.id}')"><span class="xl">+${p.rest.length} more</span>${chv('')}</button><div class="rw" id="rw-${p.id}"><ul class="fl rl">${p.rest.map((f,fi)=>fHTML(f,ck).replace('<li>',`<li style="animation-delay:${fi*.04}s">`)).join('')}</ul></div>`;h+=aoH(p,2)+'</div>'});h+='</div></div>';document.getElementById("v-2").innerHTML=h}
-
-/* ══════════════════════════════════════════════════════════════
-   C3: COMPARISON TABLE
-   ══════════════════════════════════════════════════════════════ */
-function rC3(){
-  const rows=[{s:"Capacity"},{l:"Users",k:"users"},{l:"Projects",k:"projects"},{s:"Time Tracking"},{l:"Tracking",k:"tracking"},{l:"Screenshots",k:"screenshots"},{l:"Screenshot controls",k:"scrCtrl"},{l:"App monitoring",k:"appMon"},{s:"Reporting"},{l:"Reports",k:"reports"},{l:"CSV export",k:"csv"},{l:"AI summary",k:"ai"},{l:"Prod. categories",k:"cats"},{s:"Team"},{l:"Approval",k:"approval"},{l:"Teams",k:"teams"},{l:"Tags",k:"tags"},{l:"Org chart",k:"orgChart"},{l:"Workspaces",k:"ws"},{l:"Time Off Management",k:"timeOff"},{s:"Integrations"},{l:"Calendar",k:"cal"},{l:"Slack / Jira",k:"slack"},{s:"Admin"},{l:"Notifications",k:"notif"},{l:"Support",k:"support"},{l:"Retention",k:"retention"},{l:"Account manager",k:"am"}];
-  function cell(v){if(v==="✓")return`<td><span class="cy">✓</span></td>`;if(v==="—")return`<td><span class="cn">—</span></td>`;return`<td><span class="cv">${e(v)}</span></td>`}
-  let h=chH(2)+biH()+'<div class="c-inner"><div class="cw"><table class="ct"><thead><tr><th>Feature</th>';
-  P.forEach(p=>h+=`<th class="thp"><div class="tpn ${p.cl}">${p.ic} ${p.l}${p.pop?' <span class="tag tag-pop">POP</span>':''}</div><div class="tpp">${prH(p)}</div></th>`);
-  h+='</tr></thead><tbody>';rows.forEach(r=>{if(r.s)h+=`<tr class="sr"><td colspan="5">${r.s}</td></tr>`;else{h+=`<tr><td>${e(r.l)}</td>`;P.forEach(p=>h+=cell(p.cmp[r.k]));h+='</tr>'}});
-  h+='</tbody></table></div></div>';document.getElementById("v-3").innerHTML=h}
-
-/* ══════════════════════════════════════════════════════════════
-   C4: SPECS BAR
-   ══════════════════════════════════════════════════════════════ */
-function rC4(){let h=chH(3)+biH()+'<div class="c-inner"><div class="tg">';P.forEach((p,i)=>{const ck=colOf(p.id);h+=cTop(p,i)+'<div class="sb">';p.specs.forEach(s=>h+=`<div class="sp"><span class="spv" style="color:${ck}">${s.v}</span><span class="spl">${s.l}</span></div>`);h+=`</div><ul class="fl">${p.short.map(f=>fHTML(f,ck)).join('')}</ul>${aoH(p,4)}</div>`});h+='</div></div>';document.getElementById("v-4").innerHTML=h}
-
-/* ══════════════════════════════════════════════════════════════
-   C5: DIFFERENTIATORS ONLY
-   ══════════════════════════════════════════════════════════════ */
-function rC5(){let h=chH(4)+biH()+'<div class="c-inner"><div class="tg">';P.forEach((p,i)=>{const ck=colOf(p.id);h+=cTop(p,i);if(p.diffFrom){const prev=P.find(x=>x.l===p.diffFrom);h+=`<div class="inherits-badge"><span class="ib-dot" style="background:${colOf(prev.id)}"></span>Includes all ${p.diffFrom} features</div>`}h+=`<div class="new-label" style="color:${ck}">${p.diffFrom?'What this tier adds':'Included features'}</div><ul class="fl">${p.diff.map(f=>fHTML(f,ck)).join('')}</ul>${aoH(p,5)}</div>`});h+='</div></div>';document.getElementById("v-5").innerHTML=h}
-
-/* ══════════════════════════════════════════════════════════════
-   C6: TWO-COLUMN SPLIT
-   ══════════════════════════════════════════════════════════════ */
-function rC6(){let h=chH(5)+biH()+'<div class="c-inner"><div class="tg">';P.forEach((p,i)=>{const ck=colOf(p.id);h+=cTop(p,i)+`<div class="two-col"><div><div class="col-label">Capabilities</div><ul class="fl">${p.cols.left.map(f=>fHTML(f,ck)).join('')}</ul></div><div><div class="col-label">Limits & Admin</div><ul class="fl">${p.cols.right.map(f=>fHTML(f,ck)).join('')}</ul></div></div>${aoH(p,6)}</div>`});h+='</div></div>';document.getElementById("v-6").innerHTML=h}
-
-/* ══════════════════════════════════════════════════════════════
-   C7: INNER TABS
-   ══════════════════════════════════════════════════════════════ */
-function setIT(pid,tab){innerTabSt[pid]=tab;document.querySelectorAll(`[data-itab-plan="${pid}"]`).forEach(el=>{el.classList.toggle('active',el.dataset.itabId===tab)});document.querySelectorAll(`[data-ipanel-plan="${pid}"]`).forEach(el=>{el.classList.toggle('active',el.dataset.ipanelId===tab)})}
-function rC7(){let h=chH(6)+biH()+'<div class="c-inner"><div class="tg">';P.forEach((p,i)=>{const ck=colOf(p.id);const cur=innerTabSt[p.id];h+=cTop(p,i)+`<div class="itabs"><button class="itab ${cur==='core'?'active':''}" data-itab-plan="${p.id}" data-itab-id="core" onclick="setIT('${p.id}','core')">Core</button><button class="itab ${cur==='advanced'?'active':''}" data-itab-plan="${p.id}" data-itab-id="advanced" onclick="setIT('${p.id}','advanced')">Advanced</button><button class="itab ${cur==='admin'?'active':''}" data-itab-plan="${p.id}" data-itab-id="admin" onclick="setIT('${p.id}','admin')">Admin</button></div>`;
-  ['core','advanced','admin'].forEach(tab=>{h+=`<div class="ipanel ${cur===tab?'active':''}" data-ipanel-plan="${p.id}" data-ipanel-id="${tab}"><ul class="fl">${(p.tabs[tab]||[]).map(f=>fHTML(f,ck)).join('')}</ul></div>`});
-  h+=aoH(p,7)+'</div>'});h+='</div></div>';document.getElementById("v-7").innerHTML=h}
-
 /* ═══ TABS + RENDER ═══ */
-function rTabs(){document.getElementById("tabs-c").innerHTML=CON.map((c,i)=>`<button class="tab ${i===aTab?"active":""}" onclick="sTab(${i})"><span class="tab-dot"></span>${c.l}</button>`).join("")}
-function sTab(i){aTab=i;rTabs();document.querySelectorAll(".concept").forEach((el,j)=>el.classList.toggle("active",j===i));window.scrollTo({top:0,behavior:'smooth'})}
-function renderAll(){rC1();rC2();rC3();rC4();rC5();rC6();rC7()}
+function rTabs(){}
+function sTab(i){}
+function renderAll(){rC1()}
 rTabs();renderAll();
 </script>
 </body>
